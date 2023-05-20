@@ -27,4 +27,11 @@ export const products = [
     price: "1000",
     categoryName: "fiction",
   },
+  {
+    _id: uuid(),
+    title: "Think and Grow Rich",
+    author: "Shiv Khera",
+    price: "1000",
+    categoryName: "fiction",
+  }
 ];

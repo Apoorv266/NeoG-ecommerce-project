@@ -1,0 +1,21 @@
+.nav-main{
+    display: flex;
+    height: 50px;
+    width: 60vw;
+    margin: auto;
+    background-color: #202224;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    border-bottom-right-radius:10px;
+    border-bottom-left-radius:10px;
+    padding: 10px;
+}
+
+.nav-main input {
+    width: 350px;
+    height: 40px;
+    background-color: #2A2A2A;
+    border-radius: 20px;
+    border: none;
+}
