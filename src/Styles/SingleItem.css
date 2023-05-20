@@ -1,0 +1,75 @@
+/* CSS code */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  color: #c0c0c1;
+  height: 90vh;
+}
+
+section .layout {
+  position: relative;
+  width: 100%;
+  /* width: 1000px; */
+  padding: 50px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  display: flex;
+  height: 400px;
+  box-shadow: -5px 72px 49px -52px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -5px 72px 49px -52px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -5px 72px 49px -52px rgba(0, 0, 0, 0.75);
+}
+
+
+.item-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0px;
+}
+
+.price {
+  color: var(--tertiary-color);
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.btn, .btn1 {
+  height: 40px;
+  justify-self: center;
+  width: 180px;
+  border-radius: 20px;
+  border: none;
+
+  font-size: 20px;
+}
+
+.btn{
+    background-color: #3ad866;
+}
+
+.btn1{
+    background-color: var(--tertiary-color);
+}
+
+.btm-btn{
+    display: flex;
+    gap: 20px;
+}

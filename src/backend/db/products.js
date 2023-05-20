@@ -8,30 +8,54 @@ import { v4 as uuid } from "uuid";
 export const products = [
   {
     _id: uuid(),
-    title: "You Can WIN",
-    author: "Shiv Khera",
-    price: "5000",
-    categoryName: "non-fiction",
+    title: "ZEBRONICS Zeb-Bang PRO Headphone",
+    company : "ZEBRONICS",
+    price: "₹999",
+    type: "headphone",
+    image : require("../../Images/ProductsImg/headphone1.png")
   },
   {
     _id: uuid(),
-    title: "You are Winner",
-    author: "Junaid Qureshi",
-    price: "3000",
-    categoryName: "horror",
+    title: "Beats Solo3 Wireless On-Ear Headphones",
+    company : "Beats",
+    price: "₹17,900",
+    type: "headphone",
+    image : require("../../Images/ProductsImg/headphone2.png")
   },
   {
     _id: uuid(),
-    title: "Think and Grow Rich",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "fiction",
-  },
+    title: "OnePlus Bullets Z2 Bluetooth Earphones",
+    company : "OnePlus",
+    price: "₹1,799",
+    type: "neckband",
+    image : require("../../Images/ProductsImg/neckband1.png")
+  }
+  ,
   {
     _id: uuid(),
-    title: "Think and Grow Rich",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "fiction",
+    title: "boAt Rockerz 330ANC Bluetooth Neckband",
+    company : "OnePlus",
+    price: "₹1,999",
+    type: "neckband",
+    image : require("../../Images/ProductsImg/neckband2.png")
+  }
+  ,
+  {
+    _id: uuid(),
+    title: "boAt Airdopes 141 Bluetooth Wireless Headphones",
+    company : "boAt",
+    price: "₹1,199",
+    type: "wireless",
+    image : require("../../Images/ProductsImg/wireless1.png")
+  }
+
+  ,
+  {
+    _id: uuid(),
+    title: "OnePlus Nord Buds True Wireless in Ear Earbuds",
+    company : "OnePlus",
+    price: "₹2,499",
+    type: "wireless",
+    image : require("../../Images/ProductsImg/wireless2.png")
   }
 ];
