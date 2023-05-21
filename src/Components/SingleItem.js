@@ -26,9 +26,9 @@ const SingleItem = () => {
 
               <p className="price">$ 1213</p>
 
-              <div className="btm-btn">
-                <button className="btn">Add to cart</button>
-                <button className="btn1">Return</button>
+              <div className="utils-btn">
+                <button className="cart-btn">Add to cart</button>
+                <button className="return-btn">Return</button>
               </div>
             </div>
           </div>

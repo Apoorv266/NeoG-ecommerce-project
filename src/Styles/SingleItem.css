@@ -51,25 +51,24 @@ section .layout {
   font-weight: 900;
 }
 
-.btn, .btn1 {
+.utils-btn{
+    display: flex;
+    gap: 20px;
+}
+.cart-btn, .return-btn {
   height: 40px;
   justify-self: center;
   width: 180px;
   border-radius: 20px;
   border: none;
-
   font-size: 20px;
 }
 
-.btn{
+.cart-btn{
     background-color: #3ad866;
 }
 
-.btn1{
+.return-btn{
     background-color: var(--tertiary-color);
-}
 
-.btm-btn{
-    display: flex;
-    gap: 20px;
 }

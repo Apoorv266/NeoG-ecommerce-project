@@ -6,3 +6,7 @@
   --discounted-price-color: green;
   --star-color: yellow;
 }
+
+button {
+  cursor: pointer;
+}
