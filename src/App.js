@@ -20,7 +20,7 @@ function App() {
         <Route path="/signup" element={<Signup/>} />
         <Route path="/cart" element={<PrivateRoute><Cart/></PrivateRoute>} />
         <Route path="/wishlist" element={<PrivateRoute><WishList/></PrivateRoute>} />
-        <Route path="/mockman" element={<Mockman colorScheme="dark" />} />
+        <Route path="/mockman" element={<Mockman  />} />
       </Routes>
 
     </div>

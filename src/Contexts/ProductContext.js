@@ -1,23 +1,45 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useEffect, useReducer, useState } from 'react'
 import { GetAllProducts } from '../Fetch-services/FetchServices'
+import { initialState, reducerFunc } from '../Reducers/Data'
+import axios from 'axios'
 
 export const productContext = createContext()
 const ProductContextFunc = ({ children }) => {
+  const [state, dispatch] = useReducer(reducerFunc, initialState)
+  const [loader, setloader] = useState(true)
 
 
   const fetchFunc = async () => {
-    const response = await GetAllProducts()
-    if (response.status === 200 || response.status === 201) {
-      setproductList(response.data.products)
+    try {
+
+      const { data: products } = await axios.get("/api/products");
+          dispatch({
+            type: "INITIAL_PRODUCT",
+            payload: products.products,
+          });
+
+
+          const { data : category } = await axios.get("/api/categories");
+          console.log(category.categories)
+          dispatch({
+            type: "INITIAL_PRODUCT",
+            payload: category.categories,
+          });
+    } catch (error) {
+      console.group(error)
+    }finally{
+      setloader(false)
     }
   }
+
   useEffect(() => {
-    fetchFunc()
+    setTimeout(() => {
+      fetchFunc()
+    }, 2000);
   }, [])
 
-  const [productList, setproductList] = useState([])
   return (
-    <productContext.Provider value={{ productList }}>{children}</productContext.Provider>
+    <productContext.Provider value={{ state,loader }}>{children}</productContext.Provider>
   )
 }
 

@@ -1,11 +1,10 @@
 import React from "react";
-import { products } from "../backend/db/products";
 import "../Styles/Products.css";
 
-const ProductCard = () => {
+const ProductCard = ({data}) => {
   return (
     <>
-      {products.map((item) => {
+      {data.map((item) => {
         return (
           <div className="product-card-main">
             <h3>{item.title}</h3>

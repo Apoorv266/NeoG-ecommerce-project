@@ -6,6 +6,11 @@
     height: 85vh;
 }
 
+/* input, select, textarea{
+    color: white;
+} */
+
+
 
 .login-main{
     display: flex;
@@ -21,11 +26,13 @@
 
 .login-main input{
     width: 350px;
-    height: 30px;
+    height: 20px;
     background-color: #2A2A2A;
     border: none;
     border-radius: 20px;
     margin-top: -15px;
+    padding: 10px;
+    color: white;
 }
 
 .login-main button{
