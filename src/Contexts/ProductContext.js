@@ -22,7 +22,7 @@ const ProductContextFunc = ({ children }) => {
           const { data : category } = await axios.get("/api/categories");
           console.log(category.categories)
           dispatch({
-            type: "INITIAL_PRODUCT",
+            type: "INITIAL_CATEGORY",
             payload: category.categories,
           });
     } catch (error) {
