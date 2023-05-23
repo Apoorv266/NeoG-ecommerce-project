@@ -30,12 +30,15 @@ section .layout {
   background-color: var(--secondary-color);
   border-radius: 10px;
   display: flex;
-  height: 400px;
+  height: auto;
   box-shadow: -5px 72px 49px -52px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: -5px 72px 49px -52px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -5px 72px 49px -52px rgba(0, 0, 0, 0.75);
 }
 
+/* .layout img{
+  height:400px
+} */
 
 .item-details{
     display: flex;
@@ -43,6 +46,11 @@ section .layout {
     justify-content: center;
     align-items: flex-start;
     gap: 0px;
+}
+
+.brand-title{
+  margin-top:-20px ;
+  color: #8e8e8e;
 }
 
 .price {

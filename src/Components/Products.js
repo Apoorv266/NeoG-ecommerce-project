@@ -12,13 +12,16 @@ const Products = () => {
   return (
     <>
       <Navbar />
-      <div className='product-main'>
+      {loader ? <Loader/> : <div className='product-main'>
         <Filters />
         <div className='product-card'>
-      {loader ? <Loader/> :  <ProductCard data={state.products}/>}
-         
+       <ProductCard data={state.products}/>
+       
         </div>
       </div>
+       } 
+      
+         
     </>
   )
 }

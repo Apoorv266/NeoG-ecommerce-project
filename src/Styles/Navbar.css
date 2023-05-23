@@ -5,7 +5,7 @@
     margin: auto;
     background-color: #202224;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     color: white;
     border-bottom-right-radius:10px;
     border-bottom-left-radius:10px;
@@ -48,4 +48,15 @@
     width: 180px;
     border-radius: 20px;
     border: 1px solid #3ad866;
+}
+
+
+.select-dropdown{
+    background-color: var(--background-color);
+    border: none;
+    width: 9vw;
+    height: 30px;
+    border-radius: 20px;
+    color: white;
+    margin-left: 20px;
 }

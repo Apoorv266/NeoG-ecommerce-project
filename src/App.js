@@ -3,7 +3,7 @@ import "./App.css";
 import Mockman from "mockman-js";
 import Home from "./Components/Home";
 import Products from "./Components/Products";
-import SingleItem from "./Components/SingleItem";
+import SingleItem from "./Components/SingleProduct";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import Cart from "./Components/Cart";
@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/products" element={<Products/>} />
-        <Route path="/eachProduct" element={<SingleItem/>} />
+        <Route path="/product/:productId" element={<SingleItem/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/cart" element={<PrivateRoute><Cart/></PrivateRoute>} />

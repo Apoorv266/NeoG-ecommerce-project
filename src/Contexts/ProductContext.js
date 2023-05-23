@@ -37,7 +37,7 @@ const ProductContextFunc = ({ children }) => {
       fetchFunc()
     }, 2000);
   }, [])
-
+console.log(state)
   return (
     <productContext.Provider value={{ state,loader }}>{children}</productContext.Provider>
   )
