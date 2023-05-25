@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import "../Styles/Products.css";
-import CircumIcon from "@klarr-agency/circum-icons-react";
 import { Link } from "react-router-dom";
 import { Heart, HeartOutline, ResizeOutline } from "react-ionicons";
 import { productContext } from "../Contexts/ProductContext";
@@ -8,7 +7,7 @@ import { productContext } from "../Contexts/ProductContext";
 
 
 const ProductCard = ({ data }) => {
-  const {addToWishlist, isInWishlist} = useContext(productContext)
+  const {addToWishlist, isInWishlist, removeFromWishlist} = useContext(productContext)
   return (
     <>
       {data.map((item) => {
@@ -19,6 +18,7 @@ const ProductCard = ({ data }) => {
                 color={'#ffffff'}
                 height="35px"
                 width="35px"
+                onClick={()=>removeFromWishlist(item._id)}
               /> : <HeartOutline
                 color={'#ffffff'}
                 height="35px"

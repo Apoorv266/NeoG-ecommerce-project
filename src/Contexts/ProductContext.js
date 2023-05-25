@@ -30,11 +30,10 @@ const ProductContextFunc = ({ children }) => {
 
 
 
-      const {status, data: {wishlist}} = await axios.get("/api/user/wishlist", {
+      const { status, data: { wishlist } } = await axios.get("/api/user/wishlist", {
         headers: { authorization: storageToken?.token },
       });
-      if(status === 200){
-        console.log("wishlist", wishlist)
+      if (status === 200) {
         dispatch({
           type: "INITIAL_WISHLIST",
           payload: wishlist,
@@ -48,15 +47,15 @@ const ProductContextFunc = ({ children }) => {
   }
 
 
-  const addToWishlist = async (product) =>{
+  const addToWishlist = async (product) => {
     try {
-      const {status, data: {wishlist}} = await axios.post(
+      const { status, data: { wishlist } } = await axios.post(
         "/api/user/wishlist",
         { product },
         { headers: { authorization: storageToken?.token } }
       );
-  
-      if(status === 201){
+
+      if (status === 201) {
         dispatch({
           type: "INITIAL_WISHLIST",
           payload: wishlist,
@@ -65,7 +64,25 @@ const ProductContextFunc = ({ children }) => {
     } catch (error) {
       console.log(error)
     }
-    
+
+  }
+
+  const removeFromWishlist = async (id) => {
+    try {
+      const { status, data: { wishlist } } = await axios.delete(
+        `/api/user/wishlist/${id}`,
+        { headers: { authorization: storageToken?.token } }
+      );
+      if (status === 200) {
+        console.log(wishlist)
+        dispatch({
+          type: "REMOVE_FROM_WISHLIST",
+          payload: wishlist,
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   useEffect(() => {
@@ -76,12 +93,12 @@ const ProductContextFunc = ({ children }) => {
   }, [])
 
 
-  const isInWishlist = (id) =>{
+  const isInWishlist = (id) => {
     return state.wishlist.find(item => item._id === id)
   }
-   console.log("wishlist", state)
+
   return (
-    <productContext.Provider value={{ state, loader, setloader,addToWishlist, isInWishlist }}>{children}</productContext.Provider>
+    <productContext.Provider value={{ state, loader, setloader, addToWishlist, isInWishlist, removeFromWishlist }}>{children}</productContext.Provider>
   )
 }
 
