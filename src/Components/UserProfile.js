@@ -11,9 +11,9 @@ const UserProfile = () => {
       <div className='profile-container'>
         <div className='user-detail-main'>
           <h2>User Details</h2>
-          <p>Username: {user?.firstName} {user?.lastName}</p>
-          <p>Email: {user?.email}</p>
-          <button onClick={handleLogout}>logout</button>
+          <h2>Username: {user?.firstName} {user?.lastName}</h2>
+          <h2>Email: {user?.email}</h2>
+          <button onClick={handleLogout} className='logout-btn'>logout</button>
         </div>
       </div>
     </div>

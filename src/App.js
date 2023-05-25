@@ -9,9 +9,6 @@ import Signup from "./Components/Signup";
 import Cart from "./Components/Cart";
 import WishList from "./Components/WishList";
 import PrivateRoute from "./Components/PrivateRoute";
-import { productContext } from "./Contexts/ProductContext";
-import { useContext } from "react";
-import Loader from "./Components/Loader";
 import UserProfile from "./Components/UserProfile";
 
 function App() {

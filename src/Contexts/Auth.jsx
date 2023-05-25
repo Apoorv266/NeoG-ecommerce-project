@@ -7,8 +7,8 @@ export const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const { setloader } = useContext(productContext);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const storageToken = localStorage.getItem("login");
-  const storageUser = localStorage.getItem("user");
+  const storageToken = JSON.parse(localStorage.getItem("token"));
+  const storageUser = JSON.parse(localStorage.getItem("user"));
   const [token, settoken] = useState(storageToken?.token);
   const [user, setUser] = useState(storageUser?.user);
 
@@ -27,7 +27,7 @@ export function AuthProvider({ children }) {
         });
         if (status === 200) {
           localStorage.setItem(
-            "login",
+            "token",
             JSON.stringify({ token: encodedToken })
           );
           settoken(encodedToken);
@@ -66,7 +66,7 @@ export function AuthProvider({ children }) {
 
         if (status === 201) {
           localStorage.setItem(
-            "login",
+            "token",
             JSON.stringify({ token: encodedToken })
           );
           settoken(encodedToken);
