@@ -88,8 +88,7 @@ export function AuthProvider({ children }) {
     setUser("");
     localStorage.clear();
   };
-  console.log("user", user);
-  console.log("storage", storageUser)
+
   return (
     <AuthContext.Provider
       value={{

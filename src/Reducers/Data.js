@@ -1,6 +1,7 @@
 export const initialState = {
     products: [],
-    categories: []
+    categories: [],
+    wishlist : []
 }
 
 
@@ -10,6 +11,8 @@ export const reducerFunc = (state, action) => {
             return { ...state, products: action.payload };
         case "INITIAL_CATEGORY":
             return { ...state, categories: action.payload };
+            case "INITIAL_WISHLIST":
+            return { ...state, wishlist: action.payload };
         default:
             return state
     }

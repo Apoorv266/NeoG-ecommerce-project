@@ -14,6 +14,7 @@ const UserProfile = () => {
           <h2>Username: {user?.firstName} {user?.lastName}</h2>
           <h2>Email: {user?.email}</h2>
           <button onClick={handleLogout} className='logout-btn'>logout</button>
+          
         </div>
       </div>
     </div>
