@@ -6,7 +6,6 @@ export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const { setloader } = useContext(productContext);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const storageToken = JSON.parse(localStorage.getItem("token"));
   const storageUser = JSON.parse(localStorage.getItem("user"));
   const [token, settoken] = useState(storageToken?.token);
@@ -36,7 +35,6 @@ export function AuthProvider({ children }) {
 
           setloader(true);
           setTimeout(() => {
-            setIsLoggedIn(true);
             if (location.state === null) {
               navigate("/products");
             } else {
@@ -75,7 +73,6 @@ export function AuthProvider({ children }) {
 
           setloader(true);
           setTimeout(() => {
-            setIsLoggedIn(true);
             setloader(false);
             navigate("/products");
           }, 1000);
@@ -90,14 +87,12 @@ export function AuthProvider({ children }) {
     settoken("");
     setUser("");
     localStorage.clear();
-    setIsLoggedIn(false);
   };
   console.log("user", user);
   console.log("storage", storageUser)
   return (
     <AuthContext.Provider
       value={{
-        isLoggedIn,
         handleLogin,
         handleLogout,
         handleSignup,

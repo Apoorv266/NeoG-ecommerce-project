@@ -4,8 +4,8 @@ import { Navigate, useLocation } from 'react-router-dom';
 
 const PrivateRoute = ({ children }) => {
     let location = useLocation();
-    const { isLoggedIn } = useContext(AuthContext);
-    return isLoggedIn ? (
+    const { token } = useContext(AuthContext);
+    return token ? (
         children
     ) : (
         <Navigate to="/login" state={{ from: location }} />
