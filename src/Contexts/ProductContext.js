@@ -6,40 +6,40 @@ import axios from 'axios'
 export const productContext = createContext()
 const ProductContextFunc = ({ children }) => {
   const [state, dispatch] = useReducer(reducerFunc, initialState)
-  const [loader, setloader] = useState(true)
+  const [loader, setloader] = useState(false)
 
 
   const fetchFunc = async () => {
     try {
 
       const { data: products } = await axios.get("/api/products");
-          dispatch({
-            type: "INITIAL_PRODUCT",
-            payload: products.products,
-          });
+      dispatch({
+        type: "INITIAL_PRODUCT",
+        payload: products.products,
+      });
 
 
-          const { data : category } = await axios.get("/api/categories");
-          console.log(category.categories)
-          dispatch({
-            type: "INITIAL_CATEGORY",
-            payload: category.categories,
-          });
+      const { data: category } = await axios.get("/api/categories");
+      dispatch({
+        type: "INITIAL_CATEGORY",
+        payload: category.categories,
+      });
     } catch (error) {
       console.group(error)
-    }finally{
+    } finally {
       setloader(false)
     }
   }
 
   useEffect(() => {
+    setloader(true)
     setTimeout(() => {
       fetchFunc()
-    }, 2000);
+    }, 1000);
   }, [])
-console.log(state)
+
   return (
-    <productContext.Provider value={{ state,loader }}>{children}</productContext.Provider>
+    <productContext.Provider value={{ state, loader, setloader }}>{children}</productContext.Provider>
   )
 }
 

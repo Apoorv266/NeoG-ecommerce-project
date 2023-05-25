@@ -8,20 +8,21 @@ import Loader from './Loader'
 
 
 const Products = () => {
-  const {state, loader} = useContext(productContext)
+  const { state, loader } = useContext(productContext)
   return (
     <>
       <Navbar />
-      {loader ? <Loader/> : <div className='product-main'>
+      
+      {loader ? <Loader /> : <div className='product-main'>
         <Filters />
         <div className='product-card'>
-       <ProductCard data={state.products}/>
-       
+          <ProductCard data={state.products} />
+
         </div>
       </div>
-       } 
-      
-         
+      }
+
+
     </>
   )
 }

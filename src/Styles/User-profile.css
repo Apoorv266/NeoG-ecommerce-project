@@ -1,0 +1,19 @@
+.profile-container{
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-detail-main{
+    background-color: var(--secondary-color);
+    width: 30vw;
+    height: 50vh;
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

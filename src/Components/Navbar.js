@@ -6,9 +6,8 @@ import { AuthContext } from '../Contexts/Auth';
 import { productContext } from '../Contexts/ProductContext';
 
 const Navbar = () => {
-  const { isLoggedIn, handleLogout } = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
   const {state} = useContext(productContext)
-console.log("test", state)
   return (
     <div className='nav-main'>
       <h3>LOGO</h3>
@@ -36,11 +35,13 @@ console.log("test", state)
         </Link>
       </div>
       <div className='profile-icon'>
-        {isLoggedIn ? <button onClick={handleLogout}>logout</button> : <button>Login</button>}
-
-        {/* <Link>
+        {isLoggedIn ?  <Link to={"/use-details"}>
         <CircumIcon name="user" color={"white"}/>
-        </Link> */}
+        </Link>: <Link to={"/login"}><button>Login</button></Link>}
+
+
+        
+        
       </div>
     </div>
   )
