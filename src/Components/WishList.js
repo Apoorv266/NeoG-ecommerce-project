@@ -13,7 +13,7 @@ const WishList = () => {
       <Navbar />
       <div className='wishlist-container'>
       <div className='product-card' style={{ gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
-        <ProductCard data={products} toWishlist = {true}/>
+        <ProductCard data={state.wishlist} toWishlist = {true}/>
       </div>
       </div>
     </>

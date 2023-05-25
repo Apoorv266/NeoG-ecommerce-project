@@ -48,13 +48,25 @@ const ProductContextFunc = ({ children }) => {
   }
 
 
-  // const addToWishlist = async (product, encodedToken) =>{
-  //   const {status, data: {wishlist}} = await axios.post(
-  //     "/api/user/wishlist",
-  //     { product },
-  //     { headers: { authorization: encodedToken } }
-  //   );
-  // }
+  const addToWishlist = async (product) =>{
+    try {
+      const {status, data: {wishlist}} = await axios.post(
+        "/api/user/wishlist",
+        { product },
+        { headers: { authorization: storageToken?.token } }
+      );
+  
+      if(status === 201){
+        dispatch({
+          type: "INITIAL_WISHLIST",
+          payload: wishlist,
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    
+  }
 
   useEffect(() => {
     setloader(true)
@@ -63,8 +75,13 @@ const ProductContextFunc = ({ children }) => {
     }, 1000);
   }, [])
 
+
+  const isInWishlist = (id) =>{
+    return state.wishlist.find(item => item._id === id)
+  }
+   console.log("wishlist", state)
   return (
-    <productContext.Provider value={{ state, loader, setloader }}>{children}</productContext.Provider>
+    <productContext.Provider value={{ state, loader, setloader,addToWishlist, isInWishlist }}>{children}</productContext.Provider>
   )
 }
 
