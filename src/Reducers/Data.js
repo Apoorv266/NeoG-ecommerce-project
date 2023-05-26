@@ -1,7 +1,8 @@
 export const initialState = {
     products: [],
     categories: [],
-    wishlist: []
+    wishlist: [],
+    cart: []
 }
 
 
@@ -16,7 +17,9 @@ export const reducerFunc = (state, action) => {
         case "ADD_TO_WISHLIST":
             return { ...state, wishlist: [...action.payload] };
         case "REMOVE_FROM_WISHLIST":
-            return { ...state, wishlist: action.payload }
+            return { ...state, wishlist: action.payload };
+            case "INITIAL_CART":
+            return { ...state, cart: action.payload };
         default:
             return state
     }

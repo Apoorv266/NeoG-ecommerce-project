@@ -12,6 +12,8 @@ const ProductContextFunc = ({ children }) => {
   const fetchFunc = async () => {
     try {
 
+
+      // to get initial products
       const { data: products } = await axios.get("/api/products");
       dispatch({
         type: "INITIAL_PRODUCT",
@@ -19,8 +21,7 @@ const ProductContextFunc = ({ children }) => {
       });
 
 
-
-
+      // to get initial categories
       const { data: category } = await axios.get("/api/categories");
       dispatch({
         type: "INITIAL_CATEGORY",
@@ -29,7 +30,7 @@ const ProductContextFunc = ({ children }) => {
 
 
 
-
+      // to get initial wishlist
       const { status, data: { wishlist } } = await axios.get("/api/user/wishlist", {
         headers: { authorization: storageToken?.token },
       });
@@ -37,6 +38,19 @@ const ProductContextFunc = ({ children }) => {
         dispatch({
           type: "INITIAL_WISHLIST",
           payload: wishlist,
+        })
+      }
+
+      
+      // to get initial cart items
+      const { status : statusCode, data: { cart } } = await axios.get("/api/user/cart", {
+        headers: { authorization: storageToken?.token },
+      });
+      console.log("cart",cart, statusCode)
+      if (status === 200) {
+        dispatch({
+          type: "INITIAL_CART",
+          payload: cart,
         })
       }
     } catch (error) {

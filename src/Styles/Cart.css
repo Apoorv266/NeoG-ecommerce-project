@@ -1,0 +1,29 @@
+.cart-title {
+  color: white;
+  text-align: center;
+}
+
+.cart-components {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+}
+
+.cart-total-card {
+  width: 35%;
+  background-color: var(--background-color);
+  color: white;
+  padding: 10px;
+}
+
+.cart-total-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
