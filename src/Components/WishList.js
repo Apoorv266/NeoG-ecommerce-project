@@ -11,7 +11,7 @@ const WishList = () => {
     <>
       <Navbar />
       <div className='wishlist-container'>
-       {state.wishlist.length > 0 ? <div className='product-card' style={{ gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
+       {state.wishlist.length > 0 ? <div className='product-item-card' style={{ gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
           <ProductCard data={state.wishlist} toWishlist={true} />
         </div> : <h1 className='wishlist-txt'>No items in wishlist 🫠</h1>}
       </div>

@@ -40,16 +40,16 @@ section .layout {
   height:400px
 } */
 
-.item-details{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 0px;
+.item-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0px;
 }
 
-.brand-title{
-  margin-top:-20px ;
+.brand-title {
+  margin-top: -20px;
   color: #8e8e8e;
 }
 
@@ -59,11 +59,12 @@ section .layout {
   font-weight: 900;
 }
 
-.utils-btn{
-    display: flex;
-    gap: 20px;
+.utils-btn {
+  display: flex;
+  gap: 20px;
 }
-.cart-btn, .return-btn {
+.cart-btn,
+.return-btn {
   height: 40px;
   justify-self: center;
   width: 180px;
@@ -72,11 +73,12 @@ section .layout {
   font-size: 20px;
 }
 
-.cart-btn{
-    background-color: #3ad866;
+.cart-btn {
+  background-color: #3ad866;
 }
 
-.return-btn{
-    background-color: var(--tertiary-color);
-
+.return-btn {
+  background-color: var(--secondary-color);
+  color: red;
+  border: 2px solid red;
 }

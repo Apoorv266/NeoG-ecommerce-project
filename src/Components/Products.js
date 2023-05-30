@@ -15,7 +15,7 @@ const Products = () => {
       
       {loader ? <Loader /> : <div className='product-main'>
         <Filters />
-        <div className='product-card' style={{ gridTemplateColumns: '1fr 1fr 1fr' }}>
+        <div className='product-item-card' style={{ gridTemplateColumns: '1fr 1fr 1fr' }}>
           <ProductCard data={state.products} toWishlist = {false}/>
         </div>
       </div>

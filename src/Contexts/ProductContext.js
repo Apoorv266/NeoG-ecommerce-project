@@ -41,12 +41,12 @@ const ProductContextFunc = ({ children }) => {
         })
       }
 
-      
+
       // to get initial cart items
-      const { status : statusCode, data: { cart } } = await axios.get("/api/user/cart", {
+      const { status: statusCode, data: { cart } } = await axios.get("/api/user/cart", {
         headers: { authorization: storageToken?.token },
       });
-      console.log("cart",cart, statusCode)
+
       if (status === 200) {
         dispatch({
           type: "INITIAL_CART",
@@ -54,13 +54,13 @@ const ProductContextFunc = ({ children }) => {
         })
       }
     } catch (error) {
-      console.group(error)
+      console.log(error)
     } finally {
       setloader(false)
     }
   }
 
-
+  // add to wishlist
   const addToWishlist = async (product) => {
     try {
       const { status, data: { wishlist } } = await axios.post(
@@ -81,6 +81,7 @@ const ProductContextFunc = ({ children }) => {
 
   }
 
+  // remove from wishlist function
   const removeFromWishlist = async (id) => {
     try {
       const { status, data: { wishlist } } = await axios.delete(
@@ -88,11 +89,64 @@ const ProductContextFunc = ({ children }) => {
         { headers: { authorization: storageToken?.token } }
       );
       if (status === 200) {
-        console.log(wishlist)
         dispatch({
           type: "REMOVE_FROM_WISHLIST",
           payload: wishlist,
         })
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  // add to cart function
+  const addtoCart = async (product) => {
+    try {
+      const { status, data: { cart } } = await axios.post(
+        "/api/user/cart",
+        { product },
+        {
+          headers: { authorization: storageToken?.token },
+        }
+      );
+      if (status === 201) {
+        dispatch({
+          type: "ADD_CART",
+          payload: cart,
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  // remove from cart
+  const removeFromCart = async (productId) => {
+    try {
+      const { status, data: { cart } } = await axios.delete(`api/user/cart/${productId}`, {
+        headers: { authorization: storageToken?.token },
+      });
+      if (status === 200) {
+        dispatch({ type: "REMOVE_FROM_CART", payload: cart })
+      }
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
+  // update cart quantity Function
+  const updateCartFunc = async (productId, type) => {
+
+    try {
+      const { status, data: { cart } } = await axios.post(
+        `/api/user/cart/${productId}`,
+        { action: { type } },
+        { headers: { authorization: storageToken?.token } }
+      );
+
+      if (status === 200) {
+        dispatch({type: "UPDATE_CART", payload: cart})
       }
     } catch (error) {
       console.log(error)
@@ -111,8 +165,18 @@ const ProductContextFunc = ({ children }) => {
     return state.wishlist.find(item => item._id === id)
   }
 
+  const isInCart = (id) => {
+    return state.cart.find(item => item._id === id)
+  }
+
+  const calPercentage = (actualPrice , discountPrice) =>{
+    let discount = actualPrice -discountPrice
+    const discountCent = (discount / actualPrice) * 100
+    return discountCent.toFixed(0)
+  }
+
   return (
-    <productContext.Provider value={{ state, loader, setloader, addToWishlist, isInWishlist, removeFromWishlist }}>{children}</productContext.Provider>
+    <productContext.Provider value={{ state, loader, setloader, addToWishlist, isInWishlist, removeFromWishlist, addtoCart, isInCart, removeFromCart ,updateCartFunc, calPercentage}}>{children}</productContext.Provider>
   )
 }
 
