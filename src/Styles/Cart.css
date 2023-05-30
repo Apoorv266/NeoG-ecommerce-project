@@ -6,37 +6,41 @@
 .cart-components {
   width: 90vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
-  margin: auto;
   text-align: center;
+  margin: auto;
 }
 
 .cart-total-card {
   width: 360px;
+  height: 380px;
   background-color: var(--background-color);
   color: white;
-  padding: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   box-shadow: -1px 50px 33px -32px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: -1px 50px 33px -32px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -1px 50px 33px -32px rgba(0, 0, 0, 0.75);
   border-radius: 10px;
+  text-align: center;
 }
 
 .cart-total-item {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  width: 120%;
-  font-size: 16px;
+  width: 80%;
+  font-size: 18px;
+  margin-top: -25px;
 }
 
 .checkout-btn {
   height: 30px;
+  font-size: 18px;
   background-color: var(--background-color);
   border: 1px solid green;
   color: green;
@@ -48,7 +52,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 70%;
+  width: 80%;
   gap: 50px;
 }
 
@@ -95,6 +99,11 @@
 .card-item-details{
   color: white;
   font-size: 18px;
+ 
+}
+
+.card-item-details p {
+  margin-top: -25px;
 }
 
 
@@ -155,3 +164,17 @@ fieldset, .incr-btn {
 .brand-title{
   margin-top:-25px
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

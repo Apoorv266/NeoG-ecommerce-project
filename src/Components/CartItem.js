@@ -3,7 +3,7 @@ import "../Styles/Cart.css";
 import { productContext } from "../Contexts/ProductContext";
 
 const CartItem = ({ item }) => {
-  const { removeFromCart, addToWishlist, updateCartFunc,calPercentage } =
+  const { removeFromCart, addToWishlist, updateCartFunc, calPercentage } =
     useContext(productContext);
   return (
     <div className="product-card-item" key={item._id}>
@@ -13,11 +13,13 @@ const CartItem = ({ item }) => {
       <div className="card-item-details">
         <h3>{item.title}</h3>
         <p className="brand-title">{item.company}</p>
-   
+
         <div className="cart-price">
           <p className="disc-price">₹{item.discount_price}</p>
           <p className="actual-price">₹{item.price}</p>
-          <p className="price-percentage" >({calPercentage(item.price,item.discount_price )}% OFF)</p>
+          <p className="price-percentage">
+            ({calPercentage(item.price, item.discount_price)}% OFF)
+          </p>
         </div>
         <fieldset>
           <input

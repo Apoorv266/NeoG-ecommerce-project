@@ -13,11 +13,13 @@ const Cart = () => {
       <h2 className='cart-title'>My Cart ({state.cart.length})</h2>
       {cartListLength ? <div className='cart-components'>
         <div className='product-card-cart'>
-          {state.cart.map((item) =><CartItem item={item}/>)}
-          
+          {state.cart.map((item) => <CartItem item={item} />)}
+
         </div>
+
         <div className='cart-total-card'>
-          <div className='cart-total-item'><p>Have A Coupon ?</p>
+          <div className='cart-total-item'>
+            <p>Have A Coupon ?</p>
             <button>Available coupons</button>
           </div>
           <div className='cart-total-item'>
