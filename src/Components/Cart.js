@@ -5,8 +5,9 @@ import CartItem from './CartItem'
 import { productContext } from '../Contexts/ProductContext'
 
 const Cart = () => {
-  const { state } = useContext(productContext)
+  const { state ,cartPriceObj} = useContext(productContext)
   const cartListLength = state.cart.length > 0
+  const {totalPrice, totalDiscount, totalAmount} = cartPriceObj
   return (
     <>
       <Navbar />
@@ -22,15 +23,15 @@ const Cart = () => {
             <p>Have A Coupon ?</p>
             <button>Available coupons</button>
           </div>
-          <div className='cart-total-item'>
-            <h5>PRICE DETAILS</h5>
-          </div>
-          <div className='cart-total-item'><p>Price (2 items)</p>
-            <p>₹ 899</p>
+
+            <h3>Price Details</h3>
+ 
+          <div className='cart-total-item'><p>Price ({state.cart.length} items)</p>
+            <p>₹ {totalPrice}</p>
           </div>
 
-          <div className='cart-total-item'><p>Discount</p>
-            <p>-₹ 630</p>
+          <div className='cart-total-item'><p>Total Discount</p>
+            <p>- ₹ {totalDiscount}</p>
           </div>
 
           <div className='cart-total-item'><p>Delivery Charges</p>
@@ -41,10 +42,14 @@ const Cart = () => {
             <p>₹ 0.00</p>
           </div>
 
-          <div className='cart-total-item'><p>Total price</p>
-            <p>₹ 231</p>
+          <div className='cart-total-item'><p>Total Amount</p>
+            <p>₹ {totalAmount}</p>
+          </div>
+          <div className='cart-total-item'><p>Coupon Applied ()</p>
+            <p>X</p>
           </div>
           <button className='checkout-btn'>Proceed to checkout</button>
+          <p>You have saved  ₹ {totalDiscount} on this order !</p>
         </div>
       </div> : <h1 className='cart-item-warning'>No item in Cart</h1>}
     </>

@@ -47,7 +47,7 @@ const ProductContextFunc = ({ children }) => {
         headers: { authorization: storageToken?.token },
       });
 
-      if (status === 200) {
+      if (statusCode === 200) {
         dispatch({
           type: "INITIAL_CART",
           payload: cart,
@@ -146,7 +146,7 @@ const ProductContextFunc = ({ children }) => {
       );
 
       if (status === 200) {
-        dispatch({type: "UPDATE_CART", payload: cart})
+        dispatch({ type: "UPDATE_CART", payload: cart })
       }
     } catch (error) {
       console.log(error)
@@ -169,14 +169,29 @@ const ProductContextFunc = ({ children }) => {
     return state.cart.find(item => item._id === id)
   }
 
-  const calPercentage = (actualPrice , discountPrice) =>{
-    let discount = actualPrice -discountPrice
+  const calPercentage = (actualPrice, discountPrice) => {
+    let discount = actualPrice - discountPrice
     const discountCent = (discount / actualPrice) * 100
     return discountCent.toFixed(0)
   }
 
+
+  // CART LOGICS
+  const cartPriceObj = state.cart.reduce((acc, curr) => {
+
+    // total price before discount
+    const costPrice = (curr.price * curr.qty)
+    // total price after discount
+    const sellPrice = (curr.discount_price * curr.qty)
+    //  total discount
+    const totalDiscount = costPrice - sellPrice
+    
+
+    return {totalPrice: acc.totalPrice += costPrice , totalDiscount : acc.totalDiscount += totalDiscount, totalAmount: acc.totalAmount += sellPrice}
+  }, { totalPrice : 0, totalDiscount : 0, totalAmount : 0 })
+
   return (
-    <productContext.Provider value={{ state, loader, setloader, addToWishlist, isInWishlist, removeFromWishlist, addtoCart, isInCart, removeFromCart ,updateCartFunc, calPercentage}}>{children}</productContext.Provider>
+    <productContext.Provider value={{ state, loader, setloader, addToWishlist, isInWishlist, removeFromWishlist, addtoCart, isInCart, removeFromCart, updateCartFunc, calPercentage,cartPriceObj }}>{children}</productContext.Provider>
   )
 }
 
