@@ -6,10 +6,11 @@ import Products from "./Components/Products";
 import SingleItem from "./Components/SingleProduct";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
-import Cart from "./Components/Cart";
 import WishList from "./Components/WishList";
 import PrivateRoute from "./Components/PrivateRoute";
 import UserProfile from "./Components/UserProfile";
+import Checkout from "./Components/Checkout/Checkout";
+import Cart from "./Components/Cart/Cart";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
            <Route path="/signup" element={<Signup />} />
           <Route path="/use-details" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
           <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
+          <Route path="/checkout" element={<PrivateRoute><Checkout /></PrivateRoute>} />
           <Route path="/wishlist" element={<PrivateRoute><WishList /></PrivateRoute>} />
           <Route path="/mockman" element={<Mockman />} />
         </Routes>

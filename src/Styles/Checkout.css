@@ -1,0 +1,84 @@
+.checkout-main {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.checkout-price-main {
+  width: 30vw;
+  min-height: 350px;
+  color: white;
+  background-color: var(--background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  box-shadow: rgba(6, 0, 0, 0.672) 0px 5px 15px;
+}
+
+.checkout-price-main h2 {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  width: 90%;
+}
+
+.ordr-detail-items,
+.ordr-price-detail {
+  width: 90%;
+  text-align: left;
+}
+
+.ckot-text, .discount-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.ckot-text{
+    margin-top: -20px;
+}
+
+.pay-btn {
+  margin: 10px 20px;
+  height: 30px;
+  background-color: green;
+  border: none;
+  color: white;
+  font-size: 18px;
+  width: 200px;
+}
+
+.ckout-address-card {
+  width: 45vw;
+  background-color: var(--background-color);
+  box-shadow: rgba(6, 0, 0, 0.672) 0px 5px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: white;
+  margin: 0 10px 10px 0;
+}
+
+.ckout-card-address {
+  text-align: left;
+  width: 80%;
+  margin-top: -15px;
+}
+
+.ckout-card-address p {
+  margin-top: -10px;
+}
+
+.coupon-btn{
+    height: 35px;
+    background-color:var(--background-color);
+    border: 1px solid green;
+    color: white;
+    font-size: 18px;
+    width: 150px;
+
+}

@@ -11,7 +11,7 @@ const SingleItem = () => {
   const currProduct = state.products?.find((product) => {
     return product._id === productId;
   });
-  const [individualData, setindividualData] = useState(storageItem)
+  const [individualData, setindividualData] = useState(currProduct)
 
  
   useEffect(() => {
