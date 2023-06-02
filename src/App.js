@@ -8,9 +8,9 @@ import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import WishList from "./Components/WishList";
 import PrivateRoute from "./Components/PrivateRoute";
-import UserProfile from "./Components/UserProfile";
 import Checkout from "./Components/Checkout/Checkout";
 import Cart from "./Components/Cart/Cart";
+import UserProfile from "./Components/UserProfile/UserProfile";
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
           <Route path="/product/:productId" element={<SingleItem />} />
           <Route path="/login" element={<Login />} />
            <Route path="/signup" element={<Signup />} />
-          <Route path="/use-details" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
+          <Route path="/user-details" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
           <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
           <Route path="/checkout" element={<PrivateRoute><Checkout /></PrivateRoute>} />
           <Route path="/wishlist" element={<PrivateRoute><WishList /></PrivateRoute>} />

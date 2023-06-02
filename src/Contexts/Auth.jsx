@@ -25,14 +25,17 @@ export function AuthProvider({ children }) {
           password: password,
         });
         if (status === 200) {
+          // storing token in local storage and state
           localStorage.setItem(
             "token",
             JSON.stringify({ token: encodedToken })
           );
           settoken(encodedToken);
+
+          // storing user in local storage and state
           localStorage.setItem("user", JSON.stringify({ user: foundUser }));
           setUser(foundUser);
-
+console.log("foundUser", foundUser)
           setloader(true);
           setTimeout(() => {
             if (location.state === null) {

@@ -7,12 +7,10 @@ export const productContext = createContext()
 const ProductContextFunc = ({ children }) => {
   const [state, dispatch] = useReducer(reducerFunc, initialState)
   const [loader, setloader] = useState(false)
-  const storageToken = JSON.parse(localStorage.getItem("token"));;
+  const storageToken = JSON.parse(localStorage.getItem("token"));
 
   const fetchFunc = async () => {
     try {
-
-
       // to get initial products
       const { data: products } = await axios.get("/api/products");
       dispatch({
@@ -53,8 +51,11 @@ const ProductContextFunc = ({ children }) => {
           payload: cart,
         })
       }
+
+
+      
     } catch (error) {
-      console.log(error)
+      console.log("error",error)
     } finally {
       setloader(false)
     }
@@ -185,13 +186,12 @@ const ProductContextFunc = ({ children }) => {
     const sellPrice = (curr.discount_price * curr.qty)
     //  total discount
     const totalDiscount = costPrice - sellPrice
-    
 
-    return {totalPrice: acc.totalPrice += costPrice , totalDiscount : acc.totalDiscount += totalDiscount, totalAmount: acc.totalAmount += sellPrice}
-  }, { totalPrice : 0, totalDiscount : 0, totalAmount : 0 })
+    return { totalPrice: acc.totalPrice += costPrice, totalDiscount: acc.totalDiscount += totalDiscount, totalAmount: acc.totalAmount += sellPrice }
+  }, { totalPrice: 0, totalDiscount: 0, totalAmount: 0 })
 
   return (
-    <productContext.Provider value={{ state, loader, setloader, addToWishlist, isInWishlist, removeFromWishlist, addtoCart, isInCart, removeFromCart, updateCartFunc, calPercentage,cartPriceObj }}>{children}</productContext.Provider>
+    <productContext.Provider value={{ state, loader, setloader, addToWishlist, isInWishlist, removeFromWishlist, addtoCart, isInCart, removeFromCart, updateCartFunc, calPercentage, cartPriceObj,dispatch}}>{children}</productContext.Provider>
   )
 }
 

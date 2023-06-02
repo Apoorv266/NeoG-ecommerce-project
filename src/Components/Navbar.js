@@ -35,7 +35,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className='profile-icon'>
-        {token ?  <Link to={"/use-details"}>
+        {token ?  <Link to={"/user-details"}>
         <CircumIcon name="user" color={"white"}/>
         </Link>: <Link to={"/login"}><button>Login</button></Link>}
 
