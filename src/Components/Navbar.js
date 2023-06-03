@@ -7,7 +7,7 @@ import { productContext } from '../Contexts/ProductContext';
 
 const Navbar = () => {
   const { token } = useContext(AuthContext);
-  const { state, filterDispatch, filterState } = useContext(productContext)
+  const { filterDispatch, filterState } = useContext(productContext)
   const navigate = useNavigate()
   return (
     <div className='nav-main'>
@@ -17,15 +17,6 @@ const Navbar = () => {
             filterDispatch({ type: "ADD_INPUT_FIELD", payload: event.target.value });
             navigate("/products");
           }}/>
-      </div>
-      <div>
-        <select className="select-dropdown" name='test'>
-          <option selected disabled hidden>Choose category</option>
-          <option value="All">All</option>
-          {state.categories.map((item) => <option value={`${item.categoryName
-            }`} key={item._id}>{item.categoryName}</option>
-          )}
-        </select>
       </div>
       <div className='icons'>
         <Link to={"/products"}>
