@@ -38,8 +38,6 @@ const SingleItem = () => {
               <p>
                 {currProduct?.description}
               </p>
-
-              {/* <p><strong>Ratings : </strong>{currProduct?.starRating}</p> */}
               <p className="price">₹ {currProduct?.discount_price}</p>
               <div className="utils-btn">
                 {isInWishlist(currProduct?._id) ? <Heart

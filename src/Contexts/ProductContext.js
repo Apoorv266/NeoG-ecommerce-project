@@ -195,18 +195,27 @@ const ProductContextFunc = ({ children }) => {
 
 
   // FILTER FUNCTIONALITY
-  const filterText = filterState.searchTxt ? state.products.filter((item) => item.title.toLowerCase().includes(filterState.searchTxt.toLowerCase())) : state.products
+  const filterFunction = () =>{
+    const filterText = filterState.searchTxt ? state.products.filter((item) => item.title.toLowerCase().includes(filterState.searchTxt.toLowerCase())) : state.products
 
-  const filterCategory = filterState.categoryCheckbox.length > 0 ? state.products.filter((item) => filterState.categoryCheckbox.includes(item.type)) : filterText
+    const filterCategory = filterState.categoryCheckbox.length > 0 ? filterText.filter((item) => filterState.categoryCheckbox.includes(item.type)) : filterText
+  
+    const filterBrand = filterState.brandCheckbox.length > 0 ? filterCategory.filter((item) => filterState.brandCheckbox.includes(item.company)) : filterCategory
+  
+    const filterbyPrice = filterState.priceRadio === "" ? filterBrand : filterState.priceRadio === "lowtohigh" ? [...filterBrand].sort((a, b) => a.discount_price - b.discount_price) : [...filterBrand].sort((a, b) => b.discount_price - a.discount_price)
+  
+    const ratingFilter = filterbyPrice.filter((item) => item.starRating <= filterState.filterRating)
 
-  const filterbyPrice = filterState.priceRadio === "" ? filterCategory : filterState.priceRadio === "lowtohigh" ? [...filterCategory].sort((a, b) => a.discount_price - b.discount_price) : [...filterCategory].sort((a, b) => b.discount_price - a.discount_price)
-
-  const ratingFilter = filterbyPrice.filter((item) => item.starRating <= filterState.filterRating)
-
-  console.log(filterState)
+    return ratingFilter
+  }
+  
+  useEffect(() => {
+    filterFunction()
+  }, [filterState])
+  
 
   return (
-    <productContext.Provider value={{ state, loader, setloader, addToWishlist, isInWishlist, removeFromWishlist, addtoCart, isInCart, removeFromCart, updateCartFunc, calPercentage, cartPriceObj, dispatch, filterDispatch, filterState, ratingFilter }}>{children}</productContext.Provider>
+    <productContext.Provider value={{ state, loader, setloader, addToWishlist, isInWishlist, removeFromWishlist, addtoCart, isInCart, removeFromCart, updateCartFunc, calPercentage, cartPriceObj, dispatch, filterDispatch, filterState, filterFunction }}>{children}</productContext.Provider>
   )
 }
 

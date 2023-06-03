@@ -8,8 +8,8 @@ import { v4 as uuid } from "uuid";
 export const products = [
   {
     _id: uuid(),
-    title: "ZEBRONICS Zeb-Bang PRO Headphone",
-    company : "ZEBRONICS",
+    title: "Zebronics Zeb-Bang PRO Headphone",
+    company : "Zebronics",
     price: 999,
     discount_price : 699,
     type: "Wireless Headphones",
@@ -53,8 +53,8 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "ZEBRONICS Zeb-Duke Wireless Bluetooth Headphones",
-    company : "ZEBRONICS",
+    title: "Zebronics Zeb-Duke Wireless Bluetooth Headphones",
+    company : "Zebronics",
     price: 2499,
     discount_price : 1299,
     type: "Wireless Headphones",
@@ -169,8 +169,8 @@ export const products = [
   
   {
     _id: uuid(),
-    title: "ZEBRONICS Zeb-Bro in Ear Wired Earphones",
-    company : "ZEBRONICS",
+    title: "Zebronics Zeb-Bro in Ear Wired Earphones",
+    company : "Zebronics",
     price: 399,
     discount_price : 149,
     type: "Wired earphones",

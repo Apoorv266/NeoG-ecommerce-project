@@ -2,6 +2,7 @@ export const initialFilterState = {
     searchTxt: "",
     priceRadio: "",
     categoryCheckbox: [],
+    brandCheckbox:[],
     filterRating: 5
 }
 
@@ -11,6 +12,8 @@ export const FilterFunc = (state, action) => {
             return { ...state, searchTxt: action.payload }
         case "ADD_CATEGORY_FIELD":
             return { ...state, categoryCheckbox: state.categoryCheckbox.includes(action.payload) ? state.categoryCheckbox.filter(item => item !== action.payload) : [...state.categoryCheckbox, action.payload] }
+             case "ADD_BRAND_FIELD":
+            return { ...state, brandCheckbox: state.brandCheckbox.includes(action.payload) ? state.brandCheckbox.filter(item => item !== action.payload) : [...state.brandCheckbox, action.payload]}
         case "ADD_PRICE_RADIO":
             return { ...state, priceRadio: action.payload }
         case "RATING_RANGE":
@@ -20,6 +23,7 @@ export const FilterFunc = (state, action) => {
                 searchTxt: "",
                 priceRadio: "",
                 categoryCheckbox: [],
+    brandCheckbox:[],
                 filterRating: 5
             }
         default:
