@@ -12,7 +12,7 @@ export const products = [
     company : "ZEBRONICS",
     price: 999,
     discount_price : 699,
-    type: "headphone",
+    type: "Headphones",
     image : require("../../Images/ProductsImg/headphone1.png")
   },
   {

@@ -2,10 +2,12 @@ import React, { createContext, useEffect, useReducer, useState } from 'react'
 import { GetAllProducts } from '../Fetch-services/FetchServices'
 import { initialState, reducerFunc } from '../Reducers/Data'
 import axios from 'axios'
+import { FilterFunc, initialFilterState } from '../Reducers/Filter'
 
 export const productContext = createContext()
 const ProductContextFunc = ({ children }) => {
   const [state, dispatch] = useReducer(reducerFunc, initialState)
+  const [filterState, filterDispatch] = useReducer(FilterFunc, initialFilterState)
   const [loader, setloader] = useState(false)
   const storageToken = JSON.parse(localStorage.getItem("token"));
 
@@ -53,9 +55,9 @@ const ProductContextFunc = ({ children }) => {
       }
 
 
-      
+
     } catch (error) {
-      console.log("error",error)
+      console.log("error", error)
     } finally {
       setloader(false)
     }
@@ -190,8 +192,18 @@ const ProductContextFunc = ({ children }) => {
     return { totalPrice: acc.totalPrice += costPrice, totalDiscount: acc.totalDiscount += totalDiscount, totalAmount: acc.totalAmount += sellPrice }
   }, { totalPrice: 0, totalDiscount: 0, totalAmount: 0 })
 
+
+  // filters functionality 
+  const filterText = filterState.searchTxt ? state.products.filter((item) => item.title.toLowerCase().includes(filterState.searchTxt.toLowerCase())) : state.products
+
+  const filterCategory = filterState.categoryCheckbox.length > 0 ? state.products.filter((item) => filterState.categoryCheckbox.includes(item.type)) : filterText
+
+  const filterbyPrice = filterState.priceRadio === "" ? filterCategory : filterState.priceRadio === "lowtohigh" ? [...filterCategory].sort((a, b) => a.discount_price - b.discount_price) : [...filterCategory].sort((a, b) => b.discount_price - a.discount_price)
+
+  console.log(filterState)
+
   return (
-    <productContext.Provider value={{ state, loader, setloader, addToWishlist, isInWishlist, removeFromWishlist, addtoCart, isInCart, removeFromCart, updateCartFunc, calPercentage, cartPriceObj,dispatch}}>{children}</productContext.Provider>
+    <productContext.Provider value={{ state, loader, setloader, addToWishlist, isInWishlist, removeFromWishlist, addtoCart, isInCart, removeFromCart, updateCartFunc, calPercentage, cartPriceObj, dispatch, filterDispatch, filterState, filterbyPrice }}>{children}</productContext.Provider>
   )
 }
 
