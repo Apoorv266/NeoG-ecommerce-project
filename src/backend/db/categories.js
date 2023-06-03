@@ -14,7 +14,7 @@ export const categories = [
   },
   {
     _id: uuid(),
-    categoryName: "Headphones",
+    categoryName: "Wireless Headphones",
     description:
       "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
   },
@@ -26,14 +26,14 @@ export const categories = [
   },
   {
     _id: uuid(),
-    categoryName: "Wireless earbuds",
+    categoryName: "True Wireless earbuds",
     description:
       "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
   }
   ,
   {
     _id: uuid(),
-    categoryName: "wired Headphones",
+    categoryName: "Wired Headphones",
     description:
       "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
   }

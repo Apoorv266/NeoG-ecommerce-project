@@ -200,10 +200,12 @@ const ProductContextFunc = ({ children }) => {
 
   const filterbyPrice = filterState.priceRadio === "" ? filterCategory : filterState.priceRadio === "lowtohigh" ? [...filterCategory].sort((a, b) => a.discount_price - b.discount_price) : [...filterCategory].sort((a, b) => b.discount_price - a.discount_price)
 
+  const ratingFilter = filterbyPrice.filter((item) => item.starRating <= filterState.filterRating)
+
   console.log(filterState)
 
   return (
-    <productContext.Provider value={{ state, loader, setloader, addToWishlist, isInWishlist, removeFromWishlist, addtoCart, isInCart, removeFromCart, updateCartFunc, calPercentage, cartPriceObj, dispatch, filterDispatch, filterState, filterbyPrice }}>{children}</productContext.Provider>
+    <productContext.Provider value={{ state, loader, setloader, addToWishlist, isInWishlist, removeFromWishlist, addtoCart, isInCart, removeFromCart, updateCartFunc, calPercentage, cartPriceObj, dispatch, filterDispatch, filterState, ratingFilter }}>{children}</productContext.Provider>
   )
 }
 

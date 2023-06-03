@@ -8,15 +8,16 @@ import Loader from './Loader'
 
 
 const Products = () => {
-  const {  loader, filterbyPrice } = useContext(productContext)
+  const { loader, ratingFilter } = useContext(productContext)
   return (
     <>
       <Navbar />
+
       {loader ? <Loader /> : <div className='product-main'>
         <Filters />
-        <div className='product-item-card' style={{ gridTemplateColumns: '1fr 1fr 1fr' }}>
-          <ProductCard data={filterbyPrice} toWishlist={false} />
-        </div>
+        {ratingFilter.length > 0 ? <div className='product-item-card' style={{ gridTemplateColumns: '1fr 1fr 1fr' }}>
+          <ProductCard data={ratingFilter} toWishlist={false} />
+        </div> : <div className='no-products-title'><h2 >No products to display !</h2></div>}
       </div>
       }
 
