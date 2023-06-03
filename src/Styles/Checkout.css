@@ -57,10 +57,11 @@
   box-shadow: rgba(6, 0, 0, 0.672) 0px 5px 15px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 20px;
   color: white;
   margin: 0 10px 10px 0;
+  padding-left: 10px;
 }
 
 .ckout-card-address {
@@ -81,4 +82,16 @@
     font-size: 18px;
     width: 150px;
 
+}
+
+.order-placed-main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.order-placed-main h2{
+  color: white;
 }

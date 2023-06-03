@@ -10,12 +10,13 @@ const UserAddress = () => {
     const {state} = useContext(productContext)
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [addressForm, setaddressForm] = useState({
+        _id: "",
         name: "",
         address: "",
         number: ""
     })
     const [saveBtn, setsaveBtn] = useState(false)
-    const [currentId, setcurrentId] = useState("second")
+
 
     function openModal() {
         setsaveBtn(false)
@@ -27,9 +28,9 @@ const UserAddress = () => {
     }
 
     const editFunc = (name, address, phone, addressId) => {
-        setcurrentId(addressId)
         setsaveBtn(true)
         setaddressForm({
+            _id:addressId,
             name: name,
             address: address,
             phone: phone
@@ -38,14 +39,15 @@ const UserAddress = () => {
     }
 
 
+
     const addNewAddress = () => {
-        const isAddressPresent = state.address.find((item) => item._id === currentId)
+        const isAddressPresent = state.address.find((item) => item._id === addressForm._id)
         if (isAddressPresent) {
-            editAddress(addressForm,currentId )
+            editAddress(addressForm,addressForm._id )
         }else{
             addAddress({ ...addressForm, _id: uuid() })
         }
-        setaddressForm({name: "",
+        setaddressForm({_id : "",name: "",
         address: "",
         number: ""})
         setIsOpen(false);

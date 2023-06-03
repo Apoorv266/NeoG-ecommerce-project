@@ -3,7 +3,8 @@ export const initialState = {
     categories: [],
     wishlist: [],
     cart: [],
-    address: []
+    address: [],
+    orderDetails: []
 }
 
 
@@ -35,6 +36,8 @@ export const reducerFunc = (state, action) => {
             return { ...state, address: action.payload };
         case "EDIT_ADDRESS":
             return { ...state, address: action.payload };
+        case "ADD_ORDER_DETAILS":
+            return { ...state, orderDetails: [...state.orderDetails, action.payload] };
         default:
             return state
     }

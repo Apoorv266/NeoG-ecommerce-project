@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Navbar from '../Navbar'
 import CheckoutAddress from './CheckoutAddress'
 import CheckoutPrice from './CheckoutPrice'
 import "../../Styles/Checkout.css"
-import { addressData } from '../../backend/db/Address'
+import { productContext } from '../../Contexts/ProductContext'
+
 
 const Checkout = () => {
-  const [address, setaddress] = useState(addressData[0])
+  const { state } = useContext(productContext)
+  const [address, setaddress] = useState(state.address[0])
   const handleAddress = (obj) =>{
     setaddress(obj)
   }

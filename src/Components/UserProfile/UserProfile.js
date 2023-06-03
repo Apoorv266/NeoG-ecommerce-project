@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import Navbar from '../Navbar'
-import { AuthContext } from '../../Contexts/Auth';
 import "../../Styles/User-profile.css"
 import UserData from './UserData';
 import UserAddress from './UserAddress';
@@ -8,7 +7,6 @@ import OrderDetails from './OrderDetails';
 
 const UserProfile = () => {
   const [toggle, settoggle] = useState(0)
-
 
   const renderComponent = () =>{
     switch (toggle) {

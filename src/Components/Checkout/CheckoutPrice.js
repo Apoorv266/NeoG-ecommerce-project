@@ -1,10 +1,23 @@
 import React, { useContext } from 'react'
 import "../../Styles/Checkout.css"
 import { productContext } from '../../Contexts/ProductContext'
+import { Link } from 'react-router-dom'
+import { v4 as uuid } from "uuid";
 
 const CheckoutPrice = ({address}) => {
-    const { state,cartPriceObj} = useContext(productContext)
+    const { state,cartPriceObj, dispatch} = useContext(productContext)
     const {totalPrice, totalDiscount, totalAmount} = cartPriceObj
+
+    const handleCheckot = (currentAddress, cart,totalCheckoutAmount) =>{
+        const orderDetail = {
+            id: uuid(),
+            productsList: [...cart],
+            address: currentAddress,
+            amount: totalCheckoutAmount,
+            date: new Date(),
+          };
+       dispatch({type: "ADD_ORDER_DETAILS", payload :orderDetail})
+    }
     return (
         <div className='checkout-price-main'>
             <h2>Order Details</h2>
@@ -50,7 +63,9 @@ const CheckoutPrice = ({address}) => {
                 <p>{address?.address}</p>
                 <p>{address?.phone}</p>
             </div>
-            <button className='pay-btn'>Pay and Place Order</button>
+            <Link to={"/order-placed"}>
+            <button className='pay-btn' onClick={()=>handleCheckot(address, state.cart,totalAmount )}>Pay and Place Order</button>
+            </Link>
         </div>
     )
 }

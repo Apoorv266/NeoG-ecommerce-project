@@ -89,6 +89,7 @@ const AddressContextFunc = ({ children }) => {
               } = response;
               if (status === 201) {
                 dispatch({ type: "EDIT_ADDRESS", payload: address });
+                console.log(address)
               }
         } catch (error) {
             console.log(error)
