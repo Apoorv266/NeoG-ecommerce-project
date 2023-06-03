@@ -19,7 +19,7 @@ const ProductCard = ({ data }) => {
               </div>
               <div>
                 {isInWishlist(item._id) ? <Heart
-                  color={'#ffffff'}
+                  color={'red'}
                   height="35px"
                   width="35px"
                   onClick={() => removeFromWishlist(item._id)}

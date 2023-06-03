@@ -25,7 +25,7 @@ export const products = [
     discount_price : 1499,
     type: "Neckbands",
     image : require("../../Images/ProductsImg/neckband1.png"),
-    starRating: 2.8,
+    starRating: 4.8,
     description: "A quick 10-minute charge delivers up to 20 hours of immersive audio playback.The flagship-level battery life delivers up to 30 hours of non-stop music on a single charge.A large 12.4 mm bass driver delivers uncompromisingly deep bass for powerful beats. Experience incredibly rich audio detail at every frequency with the titanium coating dome."
   }
   
@@ -234,7 +234,7 @@ export const products = [
     discount_price : 849,
     type: "Wired Headphones",
     image : require("../../Images/ProductsImg/wiredhead2.png"),
-    starRating: 3.8, 
+    starRating: 1.8, 
     description: "Enjoy powerful, dynamic sound with punchy bass and clear, natural vocals with the responsive 40mm Neodymium drivers, balanced sound for a complete listening experience.Its sleek, lightweight and compact design makes portability extremely convenient.The on-ear headphones with swivel earcups offers flexible wearing and a comfortable fit for everyone."
   } ,{
     _id: uuid(),

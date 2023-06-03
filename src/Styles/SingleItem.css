@@ -33,9 +33,6 @@ section .layout {
   box-shadow: rgba(6, 0, 0, 0.672) 0px 5px 15px;
 }
 
-/* .layout img{
-  height:400px
-} */
 
 .item-details {
   display: flex;
@@ -47,13 +44,14 @@ section .layout {
 
 .brand-title {
   margin-top: -20px;
-  color: #8e8e8e;
+  color: #aeaeae;
 }
 
 .price {
   color: var(--tertiary-color);
   font-size: 30px;
   font-weight: 900;
+  margin-top: -10px;
 }
 
 .utils-btn {

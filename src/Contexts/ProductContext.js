@@ -164,6 +164,7 @@ const ProductContextFunc = ({ children }) => {
   }, [])
 
 
+  // UTILITY FUNCTIONS
   const isInWishlist = (id) => {
     return state.wishlist.find(item => item._id === id)
   }
@@ -179,7 +180,7 @@ const ProductContextFunc = ({ children }) => {
   }
 
 
-  // CART LOGICS
+  // CART CALCULATIONS
   const cartPriceObj = state.cart.reduce((acc, curr) => {
 
     // total price before discount
@@ -193,7 +194,7 @@ const ProductContextFunc = ({ children }) => {
   }, { totalPrice: 0, totalDiscount: 0, totalAmount: 0 })
 
 
-  // filters functionality 
+  // FILTER FUNCTIONALITY
   const filterText = filterState.searchTxt ? state.products.filter((item) => item.title.toLowerCase().includes(filterState.searchTxt.toLowerCase())) : state.products
 
   const filterCategory = filterState.categoryCheckbox.length > 0 ? state.products.filter((item) => filterState.categoryCheckbox.includes(item.type)) : filterText
