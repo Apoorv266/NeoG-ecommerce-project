@@ -10,7 +10,9 @@ const Navbar = () => {
   const navigate = useNavigate()
   return (
     <div className='nav-main'>
+      <Link to={"/"}>
       <span>LOGO</span>
+      </Link>
       <div>
         <input type='text' placeholder='Search product here...' value={filterState.searchTxt} onChange={(event) => {
           filterDispatch({ type: "ADD_INPUT_FIELD", payload: event.target.value });

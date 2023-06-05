@@ -9,32 +9,29 @@ export const categories = [
   {
     _id: uuid(),
     categoryName: "Wired earphones",
-    description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+      image: require("../../Images/categoryImg/wired_earphone.png")
   },
   {
     _id: uuid(),
     categoryName: "Wireless Headphones",
-    description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+      image: require("../../Images/categoryImg/headphone.webp")
   },
   {
     _id: uuid(),
     categoryName: "Neckbands",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+      image: require("../../Images/categoryImg/neckband.png")
   },
   {
     _id: uuid(),
     categoryName: "True Wireless earbuds",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+      image: require("../../Images/categoryImg/earbuds.webp")
   }
   ,
   {
     _id: uuid(),
     categoryName: "Wired Headphones",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
-  }
+      image: require("../../Images/categoryImg/wired_headhphone.png")
+  },
+  
+  
 ];

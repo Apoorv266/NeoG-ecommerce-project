@@ -230,7 +230,7 @@ const ProductContextFunc = ({ children }) => {
     filterFunction()
   }, [filterState])
 
-
+console.log(filterState)
   return (
     <productContext.Provider value={{ state, addToWishlist, isInWishlist, removeFromWishlist, addtoCart, isInCart, removeFromCart, updateCartFunc, calPercentage, cartPriceObj, dispatch, filterDispatch, filterState, filterFunction }}>{children}</productContext.Provider>
   )
