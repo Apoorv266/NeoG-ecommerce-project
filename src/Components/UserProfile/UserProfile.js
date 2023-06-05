@@ -4,6 +4,7 @@ import "../../Styles/User-profile.css"
 import UserData from './UserData';
 import UserAddress from './UserAddress';
 import OrderDetails from './OrderDetails';
+import { ToastView } from '../Toast';
 
 const UserProfile = () => {
   const [toggle, settoggle] = useState(0)
@@ -34,6 +35,7 @@ const UserProfile = () => {
         {renderComponent()}
         </div>
       </div>
+      <ToastView/>
     </>
   )
 }

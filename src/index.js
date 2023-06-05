@@ -14,13 +14,13 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ProductContextFunc>
+      <AuthProvider>
+        <ProductContextFunc>
           <AddressContextFunc>
-        <AuthProvider>
-          <App />
-        </AuthProvider>
+            <App />
           </AddressContextFunc>
-      </ProductContextFunc>
+        </ProductContextFunc>
+      </AuthProvider>
     </BrowserRouter>
 
   </React.StrictMode>,

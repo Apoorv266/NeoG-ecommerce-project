@@ -3,19 +3,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 85vh;
+    height: 100%;
+    /* background-color: red; */
 }
-
-/* input, select, textarea{
-    color: white;
-} */
-
-
 
 .login-main{
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 40vw;
     justify-content: center;
     align-items: center;
     background-color: var(--secondary-color);
@@ -43,4 +38,35 @@
     width: 180px;
     border-radius: 20px;
     border: none;
+}
+
+.signup-txt{
+    color: white;
+    text-decoration: dotted;
+}
+
+.login-btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 768px){
+    .login-main{
+        width: 60vw;
+    }
+}
+
+@media only screen and (max-width: 425px){
+    .login-main{
+        width: 70vw;
+    }
+}
+
+@media only screen and (max-width: 375px){
+    .login-main{
+        width: 90vw;
+        /* margin-left: 18px; */
+    }
 }

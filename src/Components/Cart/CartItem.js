@@ -3,7 +3,7 @@ import "../../Styles/Cart.css";
 import { productContext } from "../../Contexts/ProductContext";
 
 const CartItem = ({ item }) => {
-  const { removeFromCart, addToWishlist, updateCartFunc, calPercentage ,isInWishlist,removeFromWishlist} =
+  const { removeFromCart, addToWishlist, updateCartFunc, calPercentage, isInWishlist, removeFromWishlist } =
     useContext(productContext);
   return (
     <div className="product-card-item" key={item._id}>
@@ -46,7 +46,7 @@ const CartItem = ({ item }) => {
         </fieldset>
       </div>
       <div className="card-bottom">
-       { isInWishlist(item._id) ? <button className="btn3" onClick={()=>removeFromWishlist(item._id)}>
+        {isInWishlist(item._id) ? <button className="btn3" onClick={() => removeFromWishlist(item._id)}>
           Remove from wishlist
         </button> : <button className="btn1" onClick={() => addToWishlist(item)}>
           Move to wishlist

@@ -4,6 +4,7 @@
   align-items: flex-start;
   margin-top: 25px;
   text-align: center;
+  flex-wrap: wrap;
 }
 
 .product-card-main {
@@ -17,19 +18,28 @@
   padding: 20px;
   border-radius: 20px;
   box-shadow: rgba(6, 0, 0, 0.672) 0px 5px 15px;
+  flex-wrap: wrap;
 }
 
 .product-card-main:hover {
   transform: translate3D(0, -1px, 0) scale(1.03);
 }
 
-.product-item-card {
+.product-item-card,
+.wishlist-item-card {
   flex-basis: 75%;
   display: grid;
-  /* grid-template-columns: 1fr 1fr 1fr; */
   gap: 20px;
   row-gap: 50px;
   text-align: center;
+}
+
+.product-item-card {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.wishlist-item-card {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .wishlist-container {
@@ -39,7 +49,8 @@
   margin-top: 20px;
 }
 
-.disc-price ,.product-card {
+.disc-price,
+.product-card {
   font-size: 25px;
   color: var(--tertiary-color);
 }
@@ -64,18 +75,78 @@
   color: white;
 }
 
-.product-rating{
+.product-rating {
   font-size: 27px;
 }
 
-.product-rating img{
+.product-rating img {
   margin-right: 10px;
 }
 
-.no-products-title{
+.no-products-title {
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   width: 75%;
+}
+
+.mobile-menu {
+  display: none;
+  
+}
+
+.web-menu {
+  display: flex;
+  position: sticky;
+  top: 0;
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .wishlist-item-card {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .product-item-card {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    flex-basis: 65%;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+  .wishlist-item-card {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .product-main {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .product-item-card {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .mobile-menu {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+  }
+  .web-menu {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .wishlist-item-card {
+    grid-template-columns: 1fr;
+  }
+
+  .product-item-card {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 }

@@ -16,7 +16,7 @@ import CheckoutDone from "./Components/Checkout/CheckoutDone";
 function App() {
   return (
     <>
-      <div className="App">
+      <div className="App" style={{height:"100vh", overflow: "auto"}}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />

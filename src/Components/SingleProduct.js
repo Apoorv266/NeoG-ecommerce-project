@@ -3,6 +3,7 @@ import "../Styles/SingleItem.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { productContext } from "../Contexts/ProductContext";
 import { Heart, HeartOutline } from "react-ionicons";
+import { ToastView } from "./Toast";
 
 const SingleItem = () => {
   const { state, addtoCart, isInCart ,isInWishlist,removeFromWishlist,addToWishlist} = useContext(productContext)
@@ -63,6 +64,7 @@ const SingleItem = () => {
           </div>
         </section>
       </div>
+      <ToastView/>
     </>
   );
 };

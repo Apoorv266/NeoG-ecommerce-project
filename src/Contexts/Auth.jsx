@@ -2,10 +2,11 @@ import axios from "axios";
 import { createContext, useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { productContext } from "./ProductContext";
+import { ToastError, ToastSuccess } from "../Components/Toast";
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const { setloader } = useContext(productContext);
+  const [loader, setloader] = useState(false)
   const storageToken = JSON.parse(localStorage.getItem("token"));
   const storageUser = JSON.parse(localStorage.getItem("user"));
   const [token, settoken] = useState(storageToken?.token);
@@ -35,7 +36,6 @@ export function AuthProvider({ children }) {
           // storing user in local storage and state
           localStorage.setItem("user", JSON.stringify({ user: foundUser }));
           setUser(foundUser);
-console.log("foundUser", foundUser)
           setloader(true);
           setTimeout(() => {
             if (location.state === null) {
@@ -45,10 +45,17 @@ console.log("foundUser", foundUser)
             }
             setloader(false);
           }, 1000);
+          ToastSuccess("User logged in successfully !")
         }
       } catch (error) {
-        console.log("error:", error);
+        if (error.response.status === 404) {
+          ToastError("User need to signup !")
+        }else{
+          ToastError("Login failed try again !")
+        }
       }
+    }else{
+      ToastError("Input fields are empty")
     }
   };
 
@@ -80,16 +87,24 @@ console.log("foundUser", foundUser)
             navigate("/products");
           }, 1000);
         }
+        ToastSuccess("User Sign up successful !")
       } catch (error) {
-        console.log("error:", error);
+       console.log(error)
       }
+    }else{
+      ToastError("Input fields are empty")
     }
   };
 
   const handleLogout = () => {
+    setloader(true);
     settoken("");
     setUser("");
     localStorage.clear();
+    setTimeout(() => {
+      setloader(false);
+    }, 2000);
+    ToastSuccess("User logged out successfully!Bye👋")
   };
 
   return (
@@ -100,6 +115,8 @@ console.log("foundUser", foundUser)
         handleSignup,
         user,
         token,
+        setloader,
+        loader
       }}
     >
       {children}

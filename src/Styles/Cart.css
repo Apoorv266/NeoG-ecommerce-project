@@ -110,3 +110,55 @@ fieldset,
 .brand-title {
   margin-top: -25px;
 }
+
+@media only screen and (max-width: 1024px) {
+  .product-card-item {
+    width: 95%;
+    margin: 0 auto 10px auto;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .product-card-item {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .product-card-item {
+    width: 80%;
+  }
+
+  .product-card-item {
+    flex-direction: column;
+    height: 500px;
+  }
+
+  .card-item-details {
+    font-size: 15px;
+    height: 12px;
+    text-align: center;
+  }
+
+  .cart-price {
+    justify-content: center;
+  }
+
+  .card-bottom {
+    margin-top: 170px;
+  }
+}
+
+
+@media only screen and (max-width: 320px) {
+ 
+
+  .product-card-item {
+    flex-direction: column;
+    height: 500px;
+  }
+
+  .card-bottom {
+    margin-top: 200px;
+  }
+}

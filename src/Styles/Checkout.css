@@ -2,8 +2,8 @@
   display: flex;
   width: 100%;
   justify-content: center;
-  margin: auto;
   margin-top: 50px;
+  align-items: flex-start;
 }
 
 .checkout-price-main {
@@ -94,4 +94,32 @@
 
 .order-placed-main h2{
   color: white;
+}
+
+@media only screen and (max-width : 1024px){
+  .checkout-main {
+   align-items: center;
+   flex-direction: column;
+  }
+
+  .ckout-address-card {
+    width: 75vw;
+  }
+
+  .checkout-price-main {
+    width: 75vw;
+
+  }
+}
+
+
+@media only screen and (max-width : 425px){
+  .ckout-address-card {
+    width: 85vw;
+  }
+
+  .checkout-price-main{
+    width: 88vw;
+    margin-right: 12px;
+  }
 }

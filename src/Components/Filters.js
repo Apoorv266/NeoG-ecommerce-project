@@ -7,7 +7,6 @@ const Filters = () => {
     const { state, filterDispatch, filterState } = useContext(productContext)
 
     const brandArray = state.products.reduce((acc, curr) => acc.includes(curr.company) ? acc : [...acc, curr.company], [])
-    console.log(brandArray)
     return (
         <div className='filter-main'>
             <div className='filter-header'>

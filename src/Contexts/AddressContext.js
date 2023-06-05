@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect } from 'react'
 import axios from 'axios'
 import { productContext } from './ProductContext';
+import { ToastError, ToastSuccess } from '../Components/Toast';
 const storageToken = JSON.parse(localStorage.getItem("token"));
 
 export const addressContext = createContext()
@@ -27,7 +28,8 @@ const AddressContextFunc = ({ children }) => {
 
 
         } catch (error) {
-            console.log(error)
+            // ToastError("Some error occured !")
+            console.log("address", error)
         }
     }
 
@@ -47,9 +49,10 @@ const AddressContextFunc = ({ children }) => {
                     type: "DELETE_ADDRESS",
                     payload: address,
                 })
+                ToastSuccess ("Address deleted successfully !")
             }
         } catch (error) {
-            console.log(error)
+            ToastError("Some error occured !")
         }
     }
 
@@ -68,9 +71,10 @@ const AddressContextFunc = ({ children }) => {
             } = response;
             if (status === 201) {
                 dispatch({ type: "ADD_NEW_ADDRESS", payload: address });
+                ToastSuccess ("Address added successfully !")
             }
         } catch (error) {
-            console.log(error)
+            ToastError("Some error occured !")
         }
     }
 
@@ -89,10 +93,10 @@ const AddressContextFunc = ({ children }) => {
               } = response;
               if (status === 201) {
                 dispatch({ type: "EDIT_ADDRESS", payload: address });
-                console.log(address)
+                ToastSuccess ("Address updated successfully !")
               }
         } catch (error) {
-            console.log(error)
+            ToastError("Some error occured !")
         }
         
     }

@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap');
 @import "~@flaticon/flaticon-uicons/css/all/all";
 *{
-  font-family: 'Mukta', sans-serif;
+  font-family: 'Zilla Slab', serif;
 }
 
 body {

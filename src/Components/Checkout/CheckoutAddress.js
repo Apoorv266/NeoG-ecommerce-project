@@ -12,14 +12,13 @@ const CheckoutAddress = ({ handleAddress, address }) => {
           return (
             <div className="ckout-address-card" key={item?._id}>
               <input type="radio" name="address-radio" id="address-radio" value={1} onClick={() => handleAddress(item)} checked={item?._id === address?._id} />
-              <div>
+              <div className="address-details">
                 <h3>{item?.name}</h3>
                 <p>
                   {item?.address}
                 </p>
                 <p>Phone Number:{item?.phone}</p>
               </div>
-
             </div>
           )
         })}

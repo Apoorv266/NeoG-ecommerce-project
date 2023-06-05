@@ -3,13 +3,17 @@ import { GetAllProducts } from '../Fetch-services/FetchServices'
 import { initialState, reducerFunc } from '../Reducers/Data'
 import axios from 'axios'
 import { FilterFunc, initialFilterState } from '../Reducers/Filter'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastError, ToastSuccess } from '../Components/Toast'
+import { useContext } from 'react'
+import { AuthContext } from './Auth'
 
 export const productContext = createContext()
 const ProductContextFunc = ({ children }) => {
   const [state, dispatch] = useReducer(reducerFunc, initialState)
   const [filterState, filterDispatch] = useReducer(FilterFunc, initialFilterState)
-  const [loader, setloader] = useState(false)
   const storageToken = JSON.parse(localStorage.getItem("token"));
+  const {loader, setloader} = useContext(AuthContext)
 
   const fetchFunc = async () => {
     try {
@@ -57,7 +61,8 @@ const ProductContextFunc = ({ children }) => {
 
 
     } catch (error) {
-      console.log("error", error)
+      // ToastError("Some error occured !")
+      console.log("2", error)
     } finally {
       setloader(false)
     }
@@ -77,9 +82,14 @@ const ProductContextFunc = ({ children }) => {
           type: "INITIAL_WISHLIST",
           payload: wishlist,
         })
+        ToastSuccess("Succesfully added to wishlist !")
       }
     } catch (error) {
-      console.log(error)
+      if (!storageToken) {
+        ToastError("Please login first !")
+      }else{
+        ToastError("Some error occured !")
+      }
     }
 
   }
@@ -96,9 +106,10 @@ const ProductContextFunc = ({ children }) => {
           type: "REMOVE_FROM_WISHLIST",
           payload: wishlist,
         })
+        ToastSuccess("Succesfully removed from wishlist !")
       }
     } catch (error) {
-      console.log(error)
+        ToastError("Some error occured !")
     }
   }
 
@@ -117,9 +128,14 @@ const ProductContextFunc = ({ children }) => {
           type: "ADD_CART",
           payload: cart,
         })
+        ToastSuccess("Succesfully added to cart !")
       }
     } catch (error) {
-      console.log(error)
+      if (!storageToken) {
+        ToastError("Please login first !")
+      }else{
+        ToastError("Some error occured !")
+      }
     }
   }
 
@@ -132,8 +148,9 @@ const ProductContextFunc = ({ children }) => {
       if (status === 200) {
         dispatch({ type: "REMOVE_FROM_CART", payload: cart })
       }
+      ToastSuccess("Succesfully removed from cart !")
     } catch (error) {
-      console.log(error)
+      ToastError("Some error occured !")
     }
 
   }
@@ -152,7 +169,7 @@ const ProductContextFunc = ({ children }) => {
         dispatch({ type: "UPDATE_CART", payload: cart })
       }
     } catch (error) {
-      console.log(error)
+      ToastError("Some error occured !")
     }
   }
 
@@ -195,27 +212,27 @@ const ProductContextFunc = ({ children }) => {
 
 
   // FILTER FUNCTIONALITY
-  const filterFunction = () =>{
+  const filterFunction = () => {
     const filterText = filterState.searchTxt ? state.products.filter((item) => item.title.toLowerCase().includes(filterState.searchTxt.toLowerCase())) : state.products
 
     const filterCategory = filterState.categoryCheckbox.length > 0 ? filterText.filter((item) => filterState.categoryCheckbox.includes(item.type)) : filterText
-  
+
     const filterBrand = filterState.brandCheckbox.length > 0 ? filterCategory.filter((item) => filterState.brandCheckbox.includes(item.company)) : filterCategory
-  
+
     const filterbyPrice = filterState.priceRadio === "" ? filterBrand : filterState.priceRadio === "lowtohigh" ? [...filterBrand].sort((a, b) => a.discount_price - b.discount_price) : [...filterBrand].sort((a, b) => b.discount_price - a.discount_price)
-  
+
     const ratingFilter = filterbyPrice.filter((item) => item.starRating <= filterState.filterRating)
 
     return ratingFilter
   }
-  
+
   useEffect(() => {
     filterFunction()
   }, [filterState])
-  
+
 
   return (
-    <productContext.Provider value={{ state, loader, setloader, addToWishlist, isInWishlist, removeFromWishlist, addtoCart, isInCart, removeFromCart, updateCartFunc, calPercentage, cartPriceObj, dispatch, filterDispatch, filterState, filterFunction }}>{children}</productContext.Provider>
+    <productContext.Provider value={{ state, addToWishlist, isInWishlist, removeFromWishlist, addtoCart, isInCart, removeFromCart, updateCartFunc, calPercentage, cartPriceObj, dispatch, filterDispatch, filterState, filterFunction }}>{children}</productContext.Provider>
   )
 }
 

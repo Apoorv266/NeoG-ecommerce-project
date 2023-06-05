@@ -46,10 +46,33 @@ input[type="range"] {
   color: white;
 }
 
-.clear-filter-btn{
+.clear-filter-btn {
   height: 30px;
   width: 100px;
   background-color: var(--tertiary-color);
   border: none;
   border-radius: 20px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--tertiary-color);
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .filter-header {
+    width: 30vw;
+  }
 }

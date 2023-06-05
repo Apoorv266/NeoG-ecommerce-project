@@ -1,20 +1,28 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import "../Styles/Login.css"
 import { AuthContext } from '../Contexts/Auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Loader from './Loader';
-import { productContext } from '../Contexts/ProductContext';
+import { ToastView } from './Toast';
 
 const Signup = () => {
-  const { handleSignup } = useContext(AuthContext);
+  const { handleSignup,token } = useContext(AuthContext);
   const [signupField, setsignupField] = useState({
     email: "",
     password: "",
     firstName: "",
     lastName: ""
   })
-  const { loader } = useContext(productContext)
+  const { loader } = useContext(AuthContext)
+  const navigate = useNavigate()
+
+  
+  useEffect(() => {
+    if (token) {
+      navigate("/user-details")
+    }
+  }, [])
   return (
     <>
       <Navbar />
@@ -33,9 +41,10 @@ const Signup = () => {
           <input type='password' value={signupField.password} onChange={(e) => setsignupField((inputField) => ({ ...inputField, password: e.target.value }))} />
 
           <button onClick={() => handleSignup(signupField.email, signupField.password, signupField.firstName, signupField.lastName)}>Create a new account !</button>
-          <p>Already have an account ? <Link to={"/login"}>Sign in</Link></p>
+          <p>Already have an account ? <Link to={"/login"}><span className='signup-txt'>Sign in</span></Link></p>
         </div>
       </div>}
+      <ToastView/>
     </>
   )
 }

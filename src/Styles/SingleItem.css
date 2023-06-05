@@ -24,7 +24,6 @@ section {
 section .layout {
   position: relative;
   width: 100%;
-  /* width: 1000px; */
   padding: 50px;
   background-color: var(--secondary-color);
   border-radius: 10px;
