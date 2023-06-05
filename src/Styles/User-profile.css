@@ -17,14 +17,13 @@
 
 .profile-header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid white;
 }
 
 .profile-header h3:hover {
-  background-color: green;
-  cursor: pointer;
+cursor: pointer;
 }
 
 .profile-body {
@@ -71,7 +70,6 @@
 
 .add-address-btn {
   background-color: #149253;
-  
 }
 
 .dlt-address-btn{
@@ -89,4 +87,53 @@
 
 .order-Details-header{
   width: 410px;
+}
+
+.list-group-item{
+  text-align: center;
+  width: 35%;
+}
+.active{
+ background-color: #149253;
+  height: 100%;
+  width: 35%;
+  text-align: center;
+}
+
+@media only screen and (max-width: 1024px){
+  .profile-wrapper {
+    width: 40%;
+  }
+  .profile-body {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px){
+  .profile-wrapper {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 425px){
+  .profile-wrapper {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 375px){
+  .profile-wrapper {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 320px){
+  .profile-header{
+    gap: 20px;
+    padding: 10px;
+    text-align: center;
+  }
 }

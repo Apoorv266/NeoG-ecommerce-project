@@ -84,6 +84,7 @@ ion-icon {
     width: auto;
   }
   .icons {
-    gap: 3px;
+    margin-right: 25px;
+    gap: 5px;
   }
 }

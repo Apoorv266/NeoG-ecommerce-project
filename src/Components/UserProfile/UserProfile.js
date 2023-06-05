@@ -9,7 +9,7 @@ import { ToastView } from '../Toast';
 const UserProfile = () => {
   const [toggle, settoggle] = useState(0)
 
-  const renderComponent = () =>{
+  const renderComponent = () => {
     switch (toggle) {
       case 0:
         return <UserData />
@@ -26,16 +26,24 @@ const UserProfile = () => {
       <Navbar />
       <div className='profile-wrapper'>
         <div className='profile-header'>
+          <div className={`list-group-item ${toggle === 0 && 'active'}`}>
           <h3 onClick={() => settoggle(0)} >User details</h3>
-          <h3 onClick={() => settoggle(1)}>User Address</h3>
-          <h3 onClick={() => settoggle(2)}>My orders</h3>
+          </div>
+          <div className={`list-group-item ${toggle === 1 && 'active'}`}>
+          <h3 onClick={() => settoggle(1)} >User Address</h3>
+          </div>
+
+          <div className={`list-group-item ${toggle === 2 && 'active'}`}>
+          <h3 onClick={() => settoggle(2)} >My orders</h3>
+          </div>
+          
         </div>
 
         <div className='profile-body'>
-        {renderComponent()}
+          {renderComponent()}
         </div>
       </div>
-      <ToastView/>
+      <ToastView />
     </>
   )
 }
