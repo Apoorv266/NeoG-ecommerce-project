@@ -6,7 +6,7 @@ const Loader = () => {
   return (
     <>
      <div className='loader-main'>
-<img src={require("../Images/loader.gif")} alt="" srcset="" />
+<img src={require("../Images/loader.gif")} alt="" srcSet="" />
     </div>
     <ToastView/>
     </>

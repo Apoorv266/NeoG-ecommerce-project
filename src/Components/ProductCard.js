@@ -12,10 +12,10 @@ const ProductCard = ({ data }) => {
     <>
       {data.map((item) => {
         return (
-          <div className="product-card-main">
+          <div className="product-card-main" key={item._id}>
             <div className="product-card-icons">
               <div className="product-rating">
-                <span><img src={require("../Images/star-icon.png")} alt="" srcset="" width={"25px"} /><span className="">{item.starRating}</span></span>
+                <span><img src={require("../Images/star-icon.png")} alt="" srcSet="" width={"25px"} /><span className="">{item.starRating}</span></span>
               </div>
               <div>
                 {isInWishlist(item._id) ? <Heart
@@ -41,7 +41,7 @@ const ProductCard = ({ data }) => {
 
             </div>
             <h3>{item.title}</h3>
-            <img src={item.image} alt="" srcset="" height={"200px"} />
+            <img src={item.image} alt="" srcSet="" height={"200px"} />
             <div className="cart-price">
               <h2 className="disc-price product-card">₹ {item.discount_price}</h2>
               <p className="actual-price">₹ {item.price}</p>

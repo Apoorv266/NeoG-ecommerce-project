@@ -28,7 +28,7 @@ const Home = () => {
             "https://cdn.shopify.com/s/files/1/0057/8938/4802/files/genesis_desktop_1799_1400x.jpg?v=1685557646"
           }
           alt=""
-          srcset=""
+          srcSet=""
         />
         {/* <Link to={"/products"}>
           <button>Explore</button>
@@ -43,7 +43,7 @@ const Home = () => {
                   key={item._id}
                   onClick={() => handleCategoryFunc(item.categoryName)}
                 >
-                  <img src={item.image} alt="" srcset="" />
+                  <img src={item.image} alt="" srcSet="" />
                   <h1>{item.categoryName}</h1>
                 </div>
               );
@@ -54,7 +54,7 @@ const Home = () => {
             {state.categories.slice(-2).map((item) => {
               return (
                 <div className="category-item" key={item._id} onClick={() => handleCategoryFunc(item.categoryName)}>
-                  <img src={item.image} alt="" srcset="" />
+                  <img src={item.image} alt="" srcSet="" />
                   <h1>{item.categoryName}</h1>
                 </div>
               );

@@ -19,10 +19,10 @@ const Filters = () => {
                 <div className='slider-filter'>
                     <div className='slider-title'>
                         <span>
-                            <img src={require("../Images/star-icon.png")} alt="" srcset="" width={"15px"} /> 1
+                            <img src={require("../Images/star-icon.png")} alt="" srcSet="" width={"15px"} /> 1
                         </span>
                         <span>
-                            5 <img src={require("../Images/star-icon.png")} alt="" srcset="" width={"15px"} />
+                            5 <img src={require("../Images/star-icon.png")} alt="" srcSet="" width={"15px"} />
                         </span>
                     </div>
                     <input
@@ -46,12 +46,12 @@ const Filters = () => {
 
                 <h3>Filter by Categories :-</h3>
                 {state.categories.map((item) => {
-                    return <div key={item._id}><label><input type='checkbox' checked={filterState.categoryCheckbox.includes(item.categoryName)} onClick={() => filterDispatch({ type: "ADD_CATEGORY_FIELD", payload: item.categoryName })} />{item.categoryName}</label></div>
+                    return <div key={item._id}><label><input type='checkbox' checked={filterState.categoryCheckbox.includes(item.categoryName)} onChange={() => filterDispatch({ type: "ADD_CATEGORY_FIELD", payload: item.categoryName })} />{item.categoryName}</label></div>
                 })}
 
                 <h3>Filter by Brand :-</h3>
                 {brandArray.map((item, index) => {
-                    return <div key={index}><label><input type='checkbox' checked={filterState.brandCheckbox.includes(item)} onClick={() => filterDispatch({ type: "ADD_BRAND_FIELD", payload: item })} />{item}</label></div>
+                    return <div key={index}><label><input type='checkbox' checked={filterState.brandCheckbox.includes(item)} onChange={() => filterDispatch({ type: "ADD_BRAND_FIELD", payload: item })} />{item}</label></div>
                 })}
 
 

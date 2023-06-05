@@ -19,13 +19,7 @@ export const FilterFunc = (state, action) => {
         case "RATING_RANGE":
             return { ...state, filterRating: action.payload }
         case "CLEAR_FILTER":
-            return {
-                searchTxt: "",
-                priceRadio: "",
-                categoryCheckbox: [],
-    brandCheckbox:[],
-                filterRating: 5
-            }
+            return {...initialFilterState}
         default:
             return state
     }
