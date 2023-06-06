@@ -3,11 +3,16 @@ import "../Styles/Products.css";
 import { Link } from "react-router-dom";
 import { Heart, HeartOutline, ResizeOutline } from "react-ionicons";
 import { productContext } from "../Contexts/ProductContext";
+import { wishlistContext } from "../Contexts/WishlistContext";
+import { cartContext } from "../Contexts/CartContext";
 
 
 
 const ProductCard = ({ data }) => {
-  const { addToWishlist, isInWishlist, removeFromWishlist, addtoCart, isInCart, calPercentage } = useContext(productContext)
+  const {  calPercentage } = useContext(productContext)
+
+  const{ addtoCart, isInCart } = useContext(cartContext)
+  const {addToWishlist, removeFromWishlist, isInWishlist} = useContext(wishlistContext)
   return (
     <>
       {data.map((item) => {

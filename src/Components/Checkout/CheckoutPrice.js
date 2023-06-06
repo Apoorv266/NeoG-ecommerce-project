@@ -3,9 +3,11 @@ import "../../Styles/Checkout.css"
 import { productContext } from '../../Contexts/ProductContext'
 import { Link } from 'react-router-dom'
 import { v4 as uuid } from "uuid";
+import { cartContext } from '../../Contexts/CartContext';
 
 const CheckoutPrice = ({address}) => {
-    const { state,cartPriceObj, dispatch} = useContext(productContext)
+    const { state, dispatch} = useContext(productContext)
+    const {cartPriceObj} = useContext(cartContext)
     const {totalPrice, totalDiscount, totalAmount} = cartPriceObj
 
     const handleCheckot = (currentAddress, cart,totalCheckoutAmount) =>{

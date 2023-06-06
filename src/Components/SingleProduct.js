@@ -4,9 +4,16 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { productContext } from "../Contexts/ProductContext";
 import { Heart, HeartOutline } from "react-ionicons";
 import { ToastView } from "./Toast";
+import { wishlistContext } from "../Contexts/WishlistContext";
+import { cartContext } from "../Contexts/CartContext";
 
 const SingleItem = () => {
-  const { state, addtoCart, isInCart, isInWishlist, removeFromWishlist, addToWishlist } = useContext(productContext)
+  const {addToWishlist, removeFromWishlist, isInWishlist} = useContext(wishlistContext)
+
+  const{ addtoCart, isInCart } = useContext(cartContext)
+
+  const { state} = useContext(productContext)
+  
   const navigate = useNavigate()
   const { productId } = useParams()
   const currProduct = state.products?.find((product) => {

@@ -7,6 +7,8 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./Contexts/Auth";
 import ProductContextFunc from "./Contexts/ProductContext";
 import AddressContextFunc from "./Contexts/AddressContext";
+import WishlistContextFunc from "./Contexts/WishlistContext";
+import CartContextFunc from "./Contexts/CartContext";
 
 // Call make Server
 makeServer();
@@ -16,9 +18,13 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthProvider>
         <ProductContextFunc>
-          <AddressContextFunc>
-            <App />
-          </AddressContextFunc>
+          <WishlistContextFunc>
+            <CartContextFunc>
+            <AddressContextFunc>
+              <App />
+            </AddressContextFunc>
+            </CartContextFunc>
+          </WishlistContextFunc>
         </ProductContextFunc>
       </AuthProvider>
     </BrowserRouter>

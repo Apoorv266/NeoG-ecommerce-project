@@ -10,26 +10,27 @@ const AddressContextFunc = ({ children }) => {
 
 
     const addressFunc = async () => {
-        try {
-            // get initial address
-            const response = await axios.get("/api/user/addresses", {
-                headers: { authorization: storageToken?.token },
-            });
-            const {
-                status: addressStatus,
-                data: { address },
-            } = response;
-            if (addressStatus === 200) {
-                dispatch({
-                    type: "INITIAL_ADDRESS",
-                    payload: address,
-                })
+        if (storageToken?.token) {
+            try {
+                // get initial address
+                const response = await axios.get("/api/user/addresses", {
+                    headers: { authorization: storageToken?.token },
+                });
+                const {
+                    status: addressStatus,
+                    data: { address },
+                } = response;
+                if (addressStatus === 200) {
+                    dispatch({
+                        type: "INITIAL_ADDRESS",
+                        payload: address,
+                    })
+                }
+    
+    
+            } catch (error) {
+                ToastError("Some error occured !")
             }
-
-
-        } catch (error) {
-            // ToastError("Some error occured !")
-            console.log("address", error)
         }
     }
 

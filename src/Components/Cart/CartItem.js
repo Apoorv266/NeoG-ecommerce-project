@@ -1,10 +1,15 @@
 import React, { useContext } from "react";
 import "../../Styles/Cart.css";
 import { productContext } from "../../Contexts/ProductContext";
+import { wishlistContext } from "../../Contexts/WishlistContext";
+import { cartContext } from "../../Contexts/CartContext";
 
 const CartItem = ({ item }) => {
-  const { removeFromCart, addToWishlist, updateCartFunc, calPercentage, isInWishlist, removeFromWishlist } =
+  const {  calPercentage } =
     useContext(productContext);
+
+    const {removeFromCart, updateCartFunc} = useContext(cartContext)
+    const {addToWishlist, removeFromWishlist,isInWishlist} = useContext(wishlistContext)
   return (
     <div className="product-card-item" key={item._id}>
       <div className="card-top">

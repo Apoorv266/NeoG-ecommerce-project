@@ -2,9 +2,10 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { productContext } from '../../Contexts/ProductContext'
 import "../../Styles/Checkout.css"
+import { cartContext } from '../../Contexts/CartContext'
 
 const CartPrice = () => {
-    const { cartPriceObj } = useContext(productContext)
+    const { cartPriceObj } = useContext(cartContext)
     const { totalPrice, totalDiscount, totalAmount } = cartPriceObj
     return (
         <div className='checkout-price-main'>
