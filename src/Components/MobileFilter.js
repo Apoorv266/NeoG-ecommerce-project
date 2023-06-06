@@ -17,7 +17,6 @@ const MobileFilter = ({ setIsOpen, IsOpen }) => {
                 <i class="fi fi-br-cross"></i>
             </div>
 
-
             <div className="mobile-options">
                 <div className='filter-header-mobile'>
                     <h3>Filters</h3>

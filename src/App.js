@@ -1,7 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Mockman from "mockman-js";
-
 import Products from "./Pages/Products";
 import SingleItem from "./Pages/SingleProduct";
 import Login from "./Pages/Login";
@@ -18,7 +16,7 @@ import Homepage from "./Pages/Homepage";
 function App() {
   return (
     <>
-      <div className="App" style={{height:"100vh", overflow: "auto"}}>
+      <div className="main-container">
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/products" element={<Products />} />
@@ -30,7 +28,6 @@ function App() {
           <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
           <Route path="/checkout" element={<PrivateRoute><Checkout /></PrivateRoute>} />
           <Route path="/wishlist" element={<PrivateRoute><WishList /></PrivateRoute>} />
-          <Route path="/mockman" element={<Mockman />} />
         </Routes>
 
       </div>

@@ -6,7 +6,7 @@ import { v4 as uuid } from "uuid";
 import { cartContext } from '../../Contexts/CartContext';
 
 const CheckoutPrice = ({address}) => {
-    const { state, dispatch} = useContext(productContext)
+    const { state, dispatch, setprofileCard} = useContext(productContext)
     const {cartPriceObj} = useContext(cartContext)
     const {totalPrice, totalDiscount, totalAmount} = cartPriceObj
 
@@ -19,6 +19,7 @@ const CheckoutPrice = ({address}) => {
             date: new Date(),
           };
        dispatch({type: "ADD_ORDER_DETAILS", payload :orderDetail})
+       setprofileCard(2)
     }
     return (
         <div className='checkout-price-main'>

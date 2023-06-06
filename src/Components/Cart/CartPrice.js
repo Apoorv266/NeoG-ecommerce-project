@@ -40,6 +40,8 @@ const CartPrice = () => {
                     <p>Total Amount</p>
                     <p>₹ {totalAmount}</p>
                 </div>
+
+                
             </div>
 
             <Link to={"/checkout"}>

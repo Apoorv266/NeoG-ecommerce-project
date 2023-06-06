@@ -1,6 +1,6 @@
 .mobile {
   height: auto;
-  width: 100vw;
+  width: 100%;
   right: 0px;
   top: 0px;
   position: absolute;
@@ -32,5 +32,5 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 100vw;
+  width: 100%;
 }

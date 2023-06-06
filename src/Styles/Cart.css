@@ -13,7 +13,7 @@
   background-color: var(--background-color);
   box-shadow: rgba(6, 0, 0, 0.672) 0px 5px 15px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding: 20px;
   margin: 0 10px 10px 0;
@@ -21,8 +21,9 @@
 
 .card-top {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 200px;
 }
 
 .card-bottom {
@@ -59,6 +60,7 @@
 .card-item-details {
   color: white;
   font-size: 18px;
+  flex-grow: 1;
 }
 
 .card-item-details p {

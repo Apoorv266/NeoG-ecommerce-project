@@ -27,7 +27,7 @@ return currentDate
             <ol>
               {item.productsList.map((item) => {
                 return (
-                  <li key={item._id}>{item.title}</li>
+                  <li key={item._id}>{item.title} - x{item.qty}</li>
                 )
               })}
             </ol>

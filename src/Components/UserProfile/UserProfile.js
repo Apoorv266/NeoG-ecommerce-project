@@ -1,16 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Navbar from '../Navbar'
 import "../../Styles/User-profile.css"
 import UserData from './UserData';
 import UserAddress from './UserAddress';
 import OrderDetails from './OrderDetails';
 import { ToastView } from '../Toast';
+import { productContext } from '../../Contexts/ProductContext';
 
 const UserProfile = () => {
-  const [toggle, settoggle] = useState(0)
+  const {setprofileCard, profileCard} = useContext(productContext)
 
   const renderComponent = () => {
-    switch (toggle) {
+    switch (profileCard) {
       case 0:
         return <UserData />
       case 1:
@@ -26,15 +27,15 @@ const UserProfile = () => {
       <Navbar />
       <div className='profile-wrapper'>
         <div className='profile-header'>
-          <div className={`list-group-item ${toggle === 0 && 'active'}`}>
-          <h3 onClick={() => settoggle(0)} >User details</h3>
+          <div className={`list-group-item ${profileCard === 0 && 'active'}`}>
+          <h3 onClick={() => setprofileCard(0)} >User details</h3>
           </div>
-          <div className={`list-group-item ${toggle === 1 && 'active'}`}>
-          <h3 onClick={() => settoggle(1)} >User Address</h3>
+          <div className={`list-group-item ${profileCard === 1 && 'active'}`}>
+          <h3 onClick={() => setprofileCard(1)} >User Address</h3>
           </div>
 
-          <div className={`list-group-item ${toggle === 2 && 'active'}`}>
-          <h3 onClick={() => settoggle(2)} >My orders</h3>
+          <div className={`list-group-item ${profileCard === 2 && 'active'}`}>
+          <h3 onClick={() => setprofileCard(2)} >My orders</h3>
           </div>
           
         </div>
@@ -50,12 +51,3 @@ const UserProfile = () => {
 
 export default UserProfile
 
-
-
-function MyComponent({ condition }) {
-  if (condition) {
-    return <UserData />;
-  } else {
-    return <OrderDetails />;
-  }
-}

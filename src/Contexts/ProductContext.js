@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useReducer } from 'react'
+import React, { createContext, useEffect, useReducer, useState } from 'react'
 import { GetAllProducts } from '../Fetch-services/FetchServices'
 import { initialState, reducerFunc } from '../Reducers/Data'
 import axios from 'axios'
@@ -13,6 +13,7 @@ const ProductContextFunc = ({ children }) => {
   const [state, dispatch] = useReducer(reducerFunc, initialState)
   const [filterState, filterDispatch] = useReducer(FilterFunc, initialFilterState)
   const {setloader} = useContext(AuthContext)
+  const [profileCard, setprofileCard] = useState(0)
 
   const fetchFunc = async () => {
     try {
@@ -74,7 +75,7 @@ const ProductContextFunc = ({ children }) => {
   }, [filterState])
 
   return (
-    <productContext.Provider value={{ state, calPercentage, dispatch, filterDispatch, filterState, filterFunction }}>{children}</productContext.Provider>
+    <productContext.Provider value={{ state, calPercentage, dispatch, filterDispatch, filterState, filterFunction, profileCard, setprofileCard}}>{children}</productContext.Provider>
   )
 }
 

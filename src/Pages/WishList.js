@@ -14,7 +14,7 @@ const WishList = () => {
       <div className='wishlist-container'>
        {state.wishlist.length > 0 ? <div className='wishlist-item-card'>
           <ProductCard data={state.wishlist} toWishlist={true} />
-        </div> : <h1 className='wishlist-txt'>No items in wishlist 🫠</h1>}
+        </div> : <h1 className='wishlist-txt'>No items in wishlist !</h1>}
       </div>
       <ToastView/>
     </>
