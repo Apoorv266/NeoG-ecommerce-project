@@ -3,7 +3,7 @@ import "../Styles/SingleItem.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { productContext } from "../Contexts/ProductContext";
 import { Heart, HeartOutline } from "react-ionicons";
-import { ToastView } from "./Toast";
+import { ToastView } from "../Components/Toast";
 import { wishlistContext } from "../Contexts/WishlistContext";
 import { cartContext } from "../Contexts/CartContext";
 

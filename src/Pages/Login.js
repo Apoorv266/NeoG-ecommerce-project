@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Navbar from './Navbar'
+import Navbar from '../Components/Navbar'
 import "../Styles/Login.css"
 import { AuthContext } from '../Contexts/Auth';
 import { Link, useNavigate } from 'react-router-dom';
-import Loader from './Loader';
-import { ToastView } from './Toast';
+import Loader from '../Components/Loader';
+import { ToastView } from '../Components/Toast';
 
 const Login = () => {
   const { handleLogin ,token} = useContext(AuthContext);

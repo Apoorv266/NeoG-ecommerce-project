@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react'
-import Navbar from './Navbar'
-import Filters from './Filters'
+import Navbar from '../Components/Navbar'
+import Filters from '../Components/Filters'
 import "../Styles/Products.css"
-import ProductCard from './ProductCard'
+import ProductCard from '../Components/ProductCard'
 import { productContext } from '../Contexts/ProductContext'
-import Loader from './Loader'
-import { ToastView } from './Toast'
+import Loader from '../Components/Loader'
+import { ToastView } from '../Components/Toast'
 import { AuthContext } from '../Contexts/Auth'
-import MobileFilter from './MobileFilter'
+import MobileFilter from '../Components/MobileFilter'
 import { MenuOutline} from "react-ionicons";
 
 

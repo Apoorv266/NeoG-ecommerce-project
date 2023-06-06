@@ -1,24 +1,26 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Mockman from "mockman-js";
-import Home from "./Components/Home";
-import Products from "./Components/Products";
-import SingleItem from "./Components/SingleProduct";
-import Login from "./Components/Login";
-import Signup from "./Components/Signup";
-import WishList from "./Components/WishList";
+
+import Products from "./Pages/Products";
+import SingleItem from "./Pages/SingleProduct";
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup";
+import WishList from "./Pages/WishList";
 import PrivateRoute from "./Components/PrivateRoute";
 import Checkout from "./Components/Checkout/Checkout";
 import Cart from "./Components/Cart/Cart";
 import UserProfile from "./Components/UserProfile/UserProfile";
 import CheckoutDone from "./Components/Checkout/CheckoutDone";
+import Homepage from "./Pages/Homepage";
+
 
 function App() {
   return (
     <>
       <div className="App" style={{height:"100vh", overflow: "auto"}}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Homepage />} />
           <Route path="/products" element={<Products />} />
           <Route path="/product/:productId" element={<SingleItem />} />
           <Route path="/login" element={<Login />} />

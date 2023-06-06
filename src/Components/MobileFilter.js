@@ -1,5 +1,5 @@
 import React from 'react'
-import "../Styles/Mobile.css"
+import "../Styles/MobileFilter.css"
 import { useContext } from 'react'
 import { productContext } from '../Contexts/ProductContext'
 

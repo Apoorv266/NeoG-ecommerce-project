@@ -1,10 +1,10 @@
-import React, { createContext, useEffect, useReducer, useState } from 'react'
+import React, { createContext, useEffect, useReducer } from 'react'
 import { GetAllProducts } from '../Fetch-services/FetchServices'
 import { initialState, reducerFunc } from '../Reducers/Data'
 import axios from 'axios'
 import { FilterFunc, initialFilterState } from '../Reducers/Filter'
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastError, ToastSuccess } from '../Components/Toast'
+import { ToastError } from '../Components/Toast'
 import { useContext } from 'react'
 import { AuthContext } from './Auth'
 
@@ -12,7 +12,6 @@ export const productContext = createContext()
 const ProductContextFunc = ({ children }) => {
   const [state, dispatch] = useReducer(reducerFunc, initialState)
   const [filterState, filterDispatch] = useReducer(FilterFunc, initialFilterState)
-  const storageToken = JSON.parse(localStorage.getItem("token"));
   const {setloader} = useContext(AuthContext)
 
   const fetchFunc = async () => {
@@ -33,8 +32,7 @@ const ProductContextFunc = ({ children }) => {
       });
 
     } catch (error) {
-      // ToastError("Some error occured !")
-      console.log("2", error)
+      ToastError("Some error occured !")
     } finally {
       setloader(false)
     }

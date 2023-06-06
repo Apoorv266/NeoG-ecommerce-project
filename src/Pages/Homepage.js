@@ -1,12 +1,12 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
+import Navbar from "../Components/Navbar";
 import "../Styles/Home.css";
 import { useContext } from "react";
 import { productContext } from "../Contexts/ProductContext";
 import { useEffect } from "react";
 
-const Home = () => {
+const Homepage = () => {
   const { state, filterDispatch } = useContext(productContext);
   const navigate = useNavigate();
   const handleCategoryFunc = (category) => {
@@ -66,4 +66,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Homepage;

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import Navbar from './Navbar'
-import ProductCard from './ProductCard'
+import Navbar from '../Components/Navbar'
+import ProductCard from '../Components/ProductCard'
 import { productContext } from '../Contexts/ProductContext'
 import "../Styles/Products.css"
-import { ToastView } from './Toast'
+import { ToastView } from '../Components/Toast'
 
 
 const WishList = () => {
