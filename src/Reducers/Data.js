@@ -22,8 +22,8 @@ export const initialState = {
     cart: [],
     address: [],
     orderDetails: [],
-    couponValue: couponValues, 
-    selectedCoupon : {}
+    couponValue: couponValues,
+    selectedCoupon: {}
 }
 
 
@@ -57,10 +57,12 @@ export const reducerFunc = (state, action) => {
             return { ...state, address: action.payload };
         case "ADD_ORDER_DETAILS":
             return { ...state, orderDetails: [...state.orderDetails, action.payload] };
-            case "ADD_COUPON":
-                return { ...state, selectedCoupon:action.payload };
-                case "DELETE_COUPON":
-                    return { ...state, selectedCoupon:{} };
+        case "ADD_COUPON":
+            return { ...state, selectedCoupon: action.payload };
+        case "DELETE_COUPON":
+            return { ...state, selectedCoupon: {} };
+            case "CLEAR_CART":
+                return { ...state, cart: [] };
         default:
             return state
     }
