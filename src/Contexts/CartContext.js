@@ -106,8 +106,10 @@ const CartContextFunc = ({ children }) => {
         const sellPrice = (curr.discount_price * curr.qty)
         //  total discount
         const totalDiscount = costPrice - sellPrice
+        // coupon discount
+        const couponDiscount = (state?.selectedCoupon.discount/100)*sellPrice
     
-        return { totalPrice: acc.totalPrice += costPrice, totalDiscount: acc.totalDiscount += totalDiscount, totalAmount: acc.totalAmount += sellPrice , totalQuantity : acc.totalQuantity+= curr.qty}
+        return { totalPrice: acc.totalPrice += costPrice, totalDiscount: acc.totalDiscount += totalDiscount, totalAmount:isDiscountCodePrst ? (acc.totalAmount += sellPrice) -couponDiscount : acc.totalAmount += sellPrice , totalQuantity : acc.totalQuantity+= curr.qty}
       }, { totalPrice: 0, totalDiscount: 0, totalAmount: 0, totalQuantity:0 })
 
     useEffect(() => {

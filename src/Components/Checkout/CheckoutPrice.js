@@ -4,10 +4,12 @@ import { productContext } from '../../Contexts/ProductContext'
 import { Link } from 'react-router-dom'
 import { v4 as uuid } from "uuid";
 import { cartContext } from '../../Contexts/CartContext';
-
+import {
+    CloseCircleOutline
+  } from "react-ionicons";
 const CheckoutPrice = ({address}) => {
     const { state, dispatch, setprofileCard} = useContext(productContext)
-    const {cartPriceObj} = useContext(cartContext)
+    const {cartPriceObj, isDiscountCodePrst} = useContext(cartContext)
     const {totalPrice, totalDiscount, totalAmount, totalQuantity} = cartPriceObj
 
     const handleCheckot = (currentAddress, cart,totalCheckoutAmount) =>{
@@ -50,14 +52,24 @@ const CheckoutPrice = ({address}) => {
                     <p>Delivery Charges</p>
                     <p>FREE</p>
                 </div>
-                <div className='ckot-text'>
-                    <p>Coupon Discount</p>
-                    <p>₹ 0</p>
-                </div>
+                {isDiscountCodePrst ? <div className='ckot-text'>
+                    <p>Coupon code ({state?.selectedCoupon.code}) </p>
+                    <div className='coupon-discount'>
+                    <p>- {state?.selectedCoupon.discount}%</p>
+                    <span>
+                    <CloseCircleOutline
+                        color={'#ffffff'}
+                        height="20px"
+                        width="20px"
+                        onClick={()=>dispatch({type:  "DELETE_COUPON"})}
+                        style={{marginTop:"8px"}}
+                    /></span>
+                    </div>
+                </div> : null}
 
                 <div className='ckot-text'>
                     <p>Total Amount</p>
-                    <p>₹ {totalAmount}</p>
+                    <p>₹ {totalAmount.toFixed(2)}</p>
                 </div>
             </div>
             <h2>Deliver to</h2>

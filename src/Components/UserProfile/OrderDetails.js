@@ -19,7 +19,7 @@ return currentDate
       state?.orderDetails.map((item) => {
         return (
           <div key={item.id} style={{ width: "100%" }}>
-            <h3>Shopping Total : ₹ {item?.amount}</h3>
+            <h3>Shopping Total : ₹ {item?.amount.toFixed(2)}</h3>
             <p>Order placed on: {getDate(item?.date)}</p>
             <p>Billing name : {item?.address.name}</p>
             <p>Order address : {item?.address.address}</p>

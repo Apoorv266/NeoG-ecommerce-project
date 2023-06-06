@@ -8,7 +8,7 @@ import {
 import { productContext } from '../../Contexts/ProductContext';
 
   const CartPrice = ({ setdispCoupon }) => {
-    const {state} = useContext(productContext)
+    const {state, dispatch} = useContext(productContext)
     const { cartPriceObj, isDiscountCodePrst } = useContext(cartContext)
     const { totalPrice, totalDiscount, totalAmount, totalQuantity } = cartPriceObj
     return (
@@ -43,18 +43,22 @@ import { productContext } from '../../Contexts/ProductContext';
 
                 {isDiscountCodePrst ? <div className='ckot-text'>
                     <p>Coupon code ({state?.selectedCoupon.code}) </p>
+                    <div className='coupon-discount'>
                     <p>- {state?.selectedCoupon.discount}%</p>
                     <span>
                     <CloseCircleOutline
                         color={'#ffffff'}
                         height="20px"
                         width="20px"
+                        onClick={()=>dispatch({type:  "DELETE_COUPON"})}
+                        style={{marginTop:"8px"}}
                     /></span>
+                    </div>
                 </div> : null}
 
                 <div className='ckot-text'>
                     <p>Total Amount</p>
-                    <p>₹ {totalAmount}</p>
+                    <p>₹ {totalAmount.toFixed(2)}</p>
                 </div>
 
 
