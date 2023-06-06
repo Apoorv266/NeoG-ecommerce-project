@@ -13,8 +13,7 @@ import { createRoot } from "react-dom/client";
 
 // Call make Server
 makeServer();
-const root = createRoot(document.getElementById("root"));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>

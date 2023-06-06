@@ -26,11 +26,6 @@ const navigate = useNavigate()
     password: "adarshbalika"})
     handleLogin("adarshbalika@gmail.com", "adarshbalika")
   }
-
-  // const testFunc = () =>{
-  //   handleLogin(inputField.email, inputField.password)
-  // }
-  
   return (
     <>
       <Navbar />
@@ -43,7 +38,7 @@ const navigate = useNavigate()
           <div className='login-btn-container'>
           <button onClick={() => handleLogin(inputField.email, inputField.password)}>Login !</button>
 
-          <button onClick={handleTestUser}>Fill guest credentials!</button>
+          <button onClick={handleTestUser}>Login as guest!</button>
           </div>
 
           <p >New user ? <Link to={"/signup"}><span className='signup-txt'>Sign Up Here</span></Link></p>

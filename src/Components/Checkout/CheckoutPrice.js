@@ -8,7 +8,7 @@ import { cartContext } from '../../Contexts/CartContext';
 const CheckoutPrice = ({address}) => {
     const { state, dispatch, setprofileCard} = useContext(productContext)
     const {cartPriceObj} = useContext(cartContext)
-    const {totalPrice, totalDiscount, totalAmount} = cartPriceObj
+    const {totalPrice, totalDiscount, totalAmount, totalQuantity} = cartPriceObj
 
     const handleCheckot = (currentAddress, cart,totalCheckoutAmount) =>{
         const orderDetail = {
@@ -29,7 +29,7 @@ const CheckoutPrice = ({address}) => {
                 {state.cart.map((item) =>{
                     return (
                         <div className='ckot-text' key={item._id}>
-                        <p>{item.title}</p>
+                        <p>{item.title}</p> -
                         <p>{item.qty}</p>
                     </div>
                     )
@@ -39,7 +39,7 @@ const CheckoutPrice = ({address}) => {
             <h2>Price Details</h2>
             <div className='ordr-price-detail'>
                 <div className='ckot-text'>
-                    <p>Price ({state.cart.length} items)</p>
+                    <p>Price ({totalQuantity} items)</p>
                     <p>₹ {totalPrice}</p>
                 </div>
                 <div className='ckot-text'>

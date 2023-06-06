@@ -31,10 +31,17 @@
   text-align: left;
 }
 
-.ckot-text, .discount-section {
+
+.ckot-text, .discount-section,.coupon-text {
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+
+
+.coupon-text{
+  border: 1px solid green;
+  margin: 10px;
 }
 
 .ckot-text{

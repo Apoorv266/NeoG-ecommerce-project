@@ -1,10 +1,29 @@
+const couponValues = [
+    {
+        id: 1,
+        code: "Diwali Sale!",
+        discount: 30
+    }, {
+        id: 2,
+        code: "Holi Sale!",
+        discount: 10
+    }, {
+        id: 3,
+        code: "Test Sale!",
+        discount: 20
+    }
+]
+
+
 export const initialState = {
     products: [],
     categories: [],
     wishlist: [],
     cart: [],
     address: [],
-    orderDetails: []
+    orderDetails: [],
+    couponValue: couponValues, 
+    selectedCoupon : {}
 }
 
 
@@ -38,6 +57,8 @@ export const reducerFunc = (state, action) => {
             return { ...state, address: action.payload };
         case "ADD_ORDER_DETAILS":
             return { ...state, orderDetails: [...state.orderDetails, action.payload] };
+            case "ADD_COUPON":
+                return { ...state, selectedCoupon:action.payload };
         default:
             return state
     }

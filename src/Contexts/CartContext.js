@@ -8,7 +8,7 @@ export const cartContext = createContext()
 const CartContextFunc = ({ children }) => {
     const { dispatch, state } = useContext(productContext)
     const storageToken = JSON.parse(localStorage.getItem("token"));
-
+    const isDiscountCodePrst = Object.keys(state.selectedCoupon).length > 0
 
     const getCartFunc = async () => {
         if (storageToken?.token) {
@@ -107,14 +107,14 @@ const CartContextFunc = ({ children }) => {
         //  total discount
         const totalDiscount = costPrice - sellPrice
     
-        return { totalPrice: acc.totalPrice += costPrice, totalDiscount: acc.totalDiscount += totalDiscount, totalAmount: acc.totalAmount += sellPrice }
-      }, { totalPrice: 0, totalDiscount: 0, totalAmount: 0 })
+        return { totalPrice: acc.totalPrice += costPrice, totalDiscount: acc.totalDiscount += totalDiscount, totalAmount: acc.totalAmount += sellPrice , totalQuantity : acc.totalQuantity+= curr.qty}
+      }, { totalPrice: 0, totalDiscount: 0, totalAmount: 0, totalQuantity:0 })
 
     useEffect(() => {
         getCartFunc()
     }, [])
     return (
-        <cartContext.Provider value={{ addtoCart, isInCart, removeFromCart, updateCartFunc, cartPriceObj}}>{children}</cartContext.Provider>
+        <cartContext.Provider value={{ addtoCart, isInCart, removeFromCart, updateCartFunc, cartPriceObj, isDiscountCodePrst}}>{children}</cartContext.Provider>
     )
 }
 
