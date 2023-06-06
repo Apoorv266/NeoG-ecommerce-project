@@ -30,17 +30,25 @@
   margin-top: 10px;
 }
 
-ion-icon {
-    font-size: 64px;
-  }
+.nav-main img{
+  width: 100px;
+}
 
 @media only screen and (max-width: 1024px) {
+  .nav-main img{
+    width: 55%;
+    height: auto;
+  }
   .nav-main input {
     width: 65vw;
   }
 }
 
 @media only screen and (max-width: 768px) {
+  .nav-main img{
+    width: 75%;
+    height: auto;
+  }
   .nav-main {
     width: auto;
   }
@@ -51,21 +59,8 @@ ion-icon {
 }
 
 @media only screen and (max-width: 425px) {
-  .nav-main {
-    width: auto;
-  }
-
-  .nav-main input {
-    width: 45vw;
-  }
-
-  .profile-icon button {
-    display: none;
-  }
-
   .icons {
     gap: 9px;
-    width: 50px;
   }
 
   .nav-main {
@@ -76,15 +71,27 @@ ion-icon {
     width: 32vw;
     margin-right: 40px;
   }
+
+  .nav-main img{
+    width: 100%;
+    height: auto;
+  }
 }
 
 @media only screen and (max-width: 320px) {
   .nav-main {
     justify-content: center;
+    align-items: center;
     width: auto;
   }
   .icons {
-    margin-right: 25px;
-    gap: 5px;
+    /* margin-right: 25px; */
+    gap: 3px;
+  }
+
+  .nav-main img{
+    width: 400%;
+    height: auto;
+    margin-left: -20px;
   }
 }
