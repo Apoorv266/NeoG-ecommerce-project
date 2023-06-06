@@ -22,8 +22,8 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/product/:productId" element={<SingleItem />} />
           <Route path="/login" element={<Login />} />
-           <Route path="/signup" element={<Signup />} />
-           <Route path="/order-placed" element={<CheckoutDone />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/order-placed" element={<CheckoutDone />} />
           <Route path="/user-details" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
           <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
           <Route path="/checkout" element={<PrivateRoute><Checkout /></PrivateRoute>} />

@@ -9,20 +9,21 @@ import ProductContextFunc from "./Contexts/ProductContext";
 import AddressContextFunc from "./Contexts/AddressContext";
 import WishlistContextFunc from "./Contexts/WishlistContext";
 import CartContextFunc from "./Contexts/CartContext";
+import { createRoot } from "react-dom/client";
 
 // Call make Server
 makeServer();
-
-ReactDOM.render(
+const root = createRoot(document.getElementById("root"));
+root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
         <ProductContextFunc>
           <WishlistContextFunc>
             <CartContextFunc>
-            <AddressContextFunc>
-              <App />
-            </AddressContextFunc>
+              <AddressContextFunc>
+                <App />
+              </AddressContextFunc>
             </CartContextFunc>
           </WishlistContextFunc>
         </ProductContextFunc>
