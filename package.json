@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@flaticon/flaticon-uicons": "^2.2.0",
-    "@material-ui/icons": "^4.11.3",
     "axios": "^1.4.0",
     "dayjs": "^1.11.7",
     "jwt-decode": "^3.1.2",
