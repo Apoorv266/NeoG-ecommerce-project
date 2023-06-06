@@ -6,7 +6,7 @@ import { Heart, HeartOutline } from "react-ionicons";
 import { ToastView } from "./Toast";
 
 const SingleItem = () => {
-  const { state, addtoCart, isInCart ,isInWishlist,removeFromWishlist,addToWishlist} = useContext(productContext)
+  const { state, addtoCart, isInCart, isInWishlist, removeFromWishlist, addToWishlist } = useContext(productContext)
   const navigate = useNavigate()
   const { productId } = useParams()
   const currProduct = state.products?.find((product) => {
@@ -22,13 +22,13 @@ const SingleItem = () => {
   return (
     <>
       <div className="main">
-        <section>
+        <section className="single-card-items">
           <div className="layout">
             <img
               src={currProduct?.image}
               alt=""
               srcset=""
-              height={"450px"}
+              class="responsive"
             />
 
             <div className="item-details">
@@ -59,12 +59,11 @@ const SingleItem = () => {
                 </Link>
               </div>
 
-              
             </div>
           </div>
         </section>
       </div>
-      <ToastView/>
+      <ToastView />
     </>
   );
 };

@@ -19,10 +19,13 @@
   border-radius: 20px;
   box-shadow: rgba(6, 0, 0, 0.672) 0px 5px 15px;
   flex-wrap: wrap;
+  transition: 0.5s cubic-bezier(0.6, 0.03, 0.28, 0.98);  
+  transform: scale(1);
 }
 
 .product-card-main:hover {
-  transform: translate3D(0, -1px, 0) scale(1.03);
+  transform: scale(1.1);
+  transition: 0.5s cubic-bezier(0.6, 0.03, 0.28, 0.98);
 }
 
 .product-item-card,

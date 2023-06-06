@@ -10,7 +10,7 @@ body {
   align-items: center;
 }
 
-section {
+.single-card-items {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,10 +19,11 @@ section {
   padding: 20px;
   color: #c0c0c1;
   height: 90vh;
+  flex-direction: row;
 }
 
-section .layout {
-  position: relative;
+.single-card-items .layout {
+  /* position: relative; */
   width: 100%;
   padding: 50px;
   background-color: var(--secondary-color);
@@ -32,17 +33,16 @@ section .layout {
   box-shadow: rgba(6, 0, 0, 0.672) 0px 5px 15px;
 }
 
-
 .item-details {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 0px;
+  gap: 15px;
 }
 
 .brand-title {
-  margin-top: -20px;
+  margin-top: -10px;
   color: #aeaeae;
 }
 
@@ -75,4 +75,62 @@ section .layout {
   background-color: var(--secondary-color);
   color: red;
   border: 2px solid red;
+}
+
+.layout img {
+  transition: 0.5s cubic-bezier(0.6, 0.03, 0.28, 0.98);
+  transform: scale(0.8);
+}
+
+.layout img:hover {
+  transform: scale(1);
+  transition: 0.5s cubic-bezier(0.6, 0.03, 0.28, 0.98);
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 1024px) {
+  .layout img {
+    height: 400px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .layout img {
+    width: 100%;
+    height: auto;
+  }
+
+  .single-card-items {
+    height: auto;
+  }
+  .single-card-items .layout {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .single-card-items .layout {
+    align-items: center;
+    justify-self: center;
+    text-align: center;
+    padding: 30px;
+  }
+  
+  .single-card-items .item-details{
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+  .utils-btn {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+@media only screen and (max-width: 320px) {
+  .single-card-items .layout {
+    padding: 10px;
+  }
 }
