@@ -5,9 +5,10 @@ import { addressContext } from '../../Contexts/AddressContext'
 const Addresses = ({ editFunc }) => {
     const { state } = useContext(productContext)
     const { deleteAddressFunc } = useContext(addressContext)
+    const addressLength = state.address.length > 0
     return (
         <>
-            {state?.address?.map((item) => {
+            {addressLength ? state?.address?.map((item) => {
                 return (
                     <div className='user-address-details' key={item._id}>
                         <h2>{item.name}</h2>
@@ -19,7 +20,7 @@ const Addresses = ({ editFunc }) => {
                         </div>
                     </div>
                 )
-            })}
+            }) : <h3>No address available !</h3>}
         </>
     )
 }
