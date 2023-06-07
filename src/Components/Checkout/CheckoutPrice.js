@@ -22,7 +22,6 @@ const CheckoutPrice = ({address}) => {
           };
        dispatch({type: "ADD_ORDER_DETAILS", payload :orderDetail})
        setprofileCard(2)
-       dispatch({type: "CLEAR_CART"})
     }
     return (
         <div className='checkout-price-main'>

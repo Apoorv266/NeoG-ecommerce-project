@@ -61,8 +61,6 @@ export const reducerFunc = (state, action) => {
             return { ...state, selectedCoupon: action.payload };
         case "DELETE_COUPON":
             return { ...state, selectedCoupon: {} };
-            case "CLEAR_CART":
-                return { ...state, cart: [] };
                 case "HANDLE_LOGOUT":
                 return { ...state, cart: [], wishlist:[] };
         default:
