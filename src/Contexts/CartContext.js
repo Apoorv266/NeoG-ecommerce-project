@@ -3,19 +3,20 @@ import { productContext } from './ProductContext';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { ToastError, ToastSuccess } from '../Components/Toast';
+import { AuthContext } from './Auth';
 
 export const cartContext = createContext()
 const CartContextFunc = ({ children }) => {
     const { dispatch, state } = useContext(productContext)
     const storageToken = JSON.parse(localStorage.getItem("token"));
+    const {token} = useContext(AuthContext)
     const isDiscountCodePrst = Object.keys(state.selectedCoupon).length > 0
 
     const getCartFunc = async () => {
-        if (storageToken?.token) {
             try {
                 // to get initial cart items
                 const { status: statusCode, data: { cart } } = await axios.get("/api/user/cart", {
-                    headers: { authorization: storageToken?.token },
+                    headers: { authorization: token },
                 });
     
                 if (statusCode === 200) {
@@ -25,9 +26,8 @@ const CartContextFunc = ({ children }) => {
                     })
                 }
             } catch (error) {
-                ToastError("Some error occured !")
+                console.log(error)
             }
-        }
         
     }
 
@@ -112,9 +112,12 @@ const CartContextFunc = ({ children }) => {
         return { totalPrice: acc.totalPrice += costPrice, totalDiscount: acc.totalDiscount += totalDiscount, totalAmount:isDiscountCodePrst ? (acc.totalAmount += sellPrice) -couponDiscount : acc.totalAmount += sellPrice , totalQuantity : acc.totalQuantity+= curr.qty}
       }, { totalPrice: 0, totalDiscount: 0, totalAmount: 0, totalQuantity:0 })
 
-    useEffect(() => {
-        getCartFunc()
-    }, [])
+    
+      useEffect(() => {
+        if (token) {
+            getCartFunc();
+        }
+      }, [token]);
     return (
         <cartContext.Provider value={{ addtoCart, isInCart, removeFromCart, updateCartFunc, cartPriceObj, isDiscountCodePrst}}>{children}</cartContext.Provider>
     )

@@ -28,7 +28,6 @@ ReactDOM.render(
         </ProductContextFunc>
       </AuthProvider>
     </BrowserRouter>
-
   </React.StrictMode>,
   document.getElementById("root")
 );

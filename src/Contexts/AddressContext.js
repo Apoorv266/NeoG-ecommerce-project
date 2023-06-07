@@ -2,19 +2,22 @@ import React, { createContext, useContext, useEffect } from 'react'
 import axios from 'axios'
 import { productContext } from './ProductContext';
 import { ToastError, ToastSuccess } from '../Components/Toast';
-const storageToken = JSON.parse(localStorage.getItem("token"));
+import { AuthContext } from './Auth';
 
 export const addressContext = createContext()
+const storageToken = JSON.parse(localStorage.getItem("token"));
+
 const AddressContextFunc = ({ children }) => {
+    const {token} = useContext(AuthContext)
     const { dispatch } = useContext(productContext)
 
 
     const addressFunc = async () => {
-        if (storageToken?.token) {
+
             try {
                 // get initial address
                 const response = await axios.get("/api/user/addresses", {
-                    headers: { authorization: storageToken?.token },
+                    headers: { authorization: token },
                 });
                 const {
                     status: addressStatus,
@@ -26,12 +29,9 @@ const AddressContextFunc = ({ children }) => {
                         payload: address,
                     })
                 }
-    
-    
             } catch (error) {
-                ToastError("Some error occured !")
+                console.log( error)
             }
-        }
     }
 
 
@@ -64,7 +64,7 @@ const AddressContextFunc = ({ children }) => {
                 {
                     address: addressData,
                 },
-                { headers: { authorization: storageToken?.token } }
+                { headers: { authorization: token } }
             );
             const {
                 status,
@@ -75,6 +75,7 @@ const AddressContextFunc = ({ children }) => {
                 ToastSuccess ("Address added successfully !")
             }
         } catch (error) {
+            console.log(error)
             ToastError("Some error occured !")
         }
     }
@@ -101,12 +102,16 @@ const AddressContextFunc = ({ children }) => {
         }
         
     }
+
+
     useEffect(() => {
-        addressFunc()
-    }, [])
+        if (token) {
+            addressFunc();
+        }
+      }, [token]);
 
     return (
-        <addressContext.Provider value={{ deleteAddressFunc, addAddress ,editAddress}}>{children}</addressContext.Provider>
+        <addressContext.Provider value={{ deleteAddressFunc, addAddress ,editAddress, addressFunc}}>{children}</addressContext.Provider>
     )
 }
 

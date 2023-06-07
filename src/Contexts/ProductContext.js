@@ -10,7 +10,8 @@ import { AuthContext } from './Auth'
 
 export const productContext = createContext()
 const ProductContextFunc = ({ children }) => {
-  const [state, dispatch] = useReducer(reducerFunc, initialState)
+  const storageAddress = JSON.parse(localStorage.getItem("addressData"))
+  const [state, dispatch] = useReducer(reducerFunc, {...initialState, address :storageAddress})
   const [filterState, filterDispatch] = useReducer(FilterFunc, initialFilterState)
   const {setloader} = useContext(AuthContext)
   const [profileCard, setprofileCard] = useState(0)
@@ -73,6 +74,10 @@ const ProductContextFunc = ({ children }) => {
   useEffect(() => {
     filterFunction()
   }, [filterState])
+
+  useEffect(() => {
+    localStorage.setItem("addressData", JSON.stringify(state.address ));
+  }, [state])
 
   return (
     <productContext.Provider value={{ state, calPercentage, dispatch, filterDispatch, filterState, filterFunction, profileCard, setprofileCard}}>{children}</productContext.Provider>

@@ -1,7 +1,6 @@
 import axios from "axios";
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { productContext } from "./ProductContext";
 import { ToastError, ToastSuccess } from "../Components/Toast";
 export const AuthContext = createContext();
 
@@ -25,7 +24,7 @@ export function AuthProvider({ children }) {
           email: email,
           password: password,
         });
-        if (status === 200) {
+        if (status === 200 || status === 201) {
           // storing token in local storage and state
           localStorage.setItem(
             "token",
@@ -72,7 +71,7 @@ export function AuthProvider({ children }) {
           lastName: lastName,
         });
 
-        if (status === 201) {
+        if (status === 201 || status === 200) {
           localStorage.setItem(
             "token",
             JSON.stringify({ token: encodedToken })
@@ -98,9 +97,10 @@ export function AuthProvider({ children }) {
 
   const handleLogout = () => {
     setloader(true);
-    settoken("");
-    setUser("");
-    localStorage.clear();
+    settoken(null);
+    setUser(null);
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
     setTimeout(() => {
       setloader(false);
     }, 2000);

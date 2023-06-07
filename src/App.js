@@ -11,13 +11,14 @@ import Cart from "./Components/Cart/Cart";
 import UserProfile from "./Components/UserProfile/UserProfile";
 import CheckoutDone from "./Components/Checkout/CheckoutDone";
 import Homepage from "./Pages/Homepage";
-
+import MockMan from "mockman-js";
 
 function App() {
   return (
     <>
       <div className="main-container">
         <Routes>
+        <Route path="/mockman" element={<MockMan />} />
           <Route path="/" element={<Homepage />} />
           <Route path="/products" element={<Products />} />
           <Route path="/product/:productId" element={<SingleItem />} />

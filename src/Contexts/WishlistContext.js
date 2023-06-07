@@ -4,29 +4,29 @@ import { useContext } from 'react';
 import { productContext } from './ProductContext';
 import { ToastError, ToastSuccess } from '../Components/Toast';
 import { useEffect } from 'react';
+import { AuthContext } from './Auth';
 
 export const wishlistContext = createContext()
 
 const WishlistContextFunc = ({ children }) => {
     const { dispatch, state } = useContext(productContext)
     const storageToken = JSON.parse(localStorage.getItem("token"));
+    const { token } = useContext(AuthContext)
 
     const getWishlistFunc = async () => {
-        if (storageToken?.token) {
-            try {
-                // to get initial wishlist
-                const { status, data: { wishlist } } = await axios.get("/api/user/wishlist", {
-                    headers: { authorization: storageToken?.token },
-                });
-                if (status === 200) {
-                    dispatch({
-                        type: "INITIAL_WISHLIST",
-                        payload: wishlist,
-                    })
-                }
-            } catch (error) {
-                ToastError("Some error occured !")
+        try {
+            // to get initial wishlist
+            const { status, data: { wishlist } } = await axios.get("/api/user/wishlist", {
+                headers: { authorization: token },
+            });
+            if (status === 200) {
+                dispatch({
+                    type: "INITIAL_WISHLIST",
+                    payload: wishlist,
+                })
             }
+        } catch (error) {
+            console.log( error)
         }
     }
 
@@ -57,35 +57,37 @@ const WishlistContextFunc = ({ children }) => {
         }
     }
 
-      // remove from wishlist function
-  const removeFromWishlist = async (id) => {
-    try {
-      const { status, data: { wishlist } } = await axios.delete(
-        `/api/user/wishlist/${id}`,
-        { headers: { authorization: storageToken?.token } }
-      );
-      if (status === 200) {
-        dispatch({
-          type: "REMOVE_FROM_WISHLIST",
-          payload: wishlist,
-        })
-        ToastSuccess("Succesfully removed from wishlist !")
-      }
-    } catch (error) {
-        ToastError("Some error occured !")
+    // remove from wishlist function
+    const removeFromWishlist = async (id) => {
+        try {
+            const { status, data: { wishlist } } = await axios.delete(
+                `/api/user/wishlist/${id}`,
+                { headers: { authorization: storageToken?.token } }
+            );
+            if (status === 200) {
+                dispatch({
+                    type: "REMOVE_FROM_WISHLIST",
+                    payload: wishlist,
+                })
+                ToastSuccess("Succesfully removed from wishlist !")
+            }
+        } catch (error) {
+            ToastError("Some error occured !")
+        }
     }
-  }
 
-   const isInWishlist = (id) => {
-    return state.wishlist.find(item => item._id === id)
-  }
+    const isInWishlist = (id) => {
+        return state.wishlist.find(item => item._id === id)
+    }
 
     useEffect(() => {
-        getWishlistFunc()
-    }, [])
+        if (token) {
+            getWishlistFunc();
+        }
+    }, [token]);
 
     return (
-        <wishlistContext.Provider value={{ addToWishlist ,removeFromWishlist,isInWishlist}}>{children}</wishlistContext.Provider>
+        <wishlistContext.Provider value={{ addToWishlist, removeFromWishlist, isInWishlist }}>{children}</wishlistContext.Provider>
     )
 }
 

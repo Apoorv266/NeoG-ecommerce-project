@@ -55,18 +55,18 @@ const MobileFilter = ({ setIsOpen, IsOpen }) => {
 
                     <h3>Filter by Categories :-</h3>
                     {state.categories.map((item) => {
-                        return <div key={item._id}><label><input type='checkbox' checked={filterState.categoryCheckbox.includes(item.categoryName)} onClick={() => filterDispatch({ type: "ADD_CATEGORY_FIELD", payload: item.categoryName })} />{item.categoryName}</label></div>
+                        return <div key={item._id}><label><input type='checkbox' checked={filterState.categoryCheckbox.includes(item.categoryName)} onChange={() => filterDispatch({ type: "ADD_CATEGORY_FIELD", payload: item.categoryName })} />{item.categoryName}</label></div>
                     })}
 
                     <h3>Filter by Brand :-</h3>
                     {brandArray.map((item, index) => {
-                        return <div key={index}><label><input type='checkbox' checked={filterState.brandCheckbox.includes(item)} onClick={() => filterDispatch({ type: "ADD_BRAND_FIELD", payload: item })} />{item}</label></div>
+                        return <div key={index}><label><input type='checkbox' checked={filterState.brandCheckbox.includes(item)} onChange={() => filterDispatch({ type: "ADD_BRAND_FIELD", payload: item })} />{item}</label></div>
                     })}
 
 
                     <h3>Sort By Price :-</h3>
-                    <div><label><input type='radio' name='ratings' onClick={() => filterDispatch({ type: "ADD_PRICE_RADIO", payload: "lowtohigh" })} />Price (low to high)</label></div>
-                    <div><label><input type='radio' name='ratings' onClick={() => filterDispatch({ type: "ADD_PRICE_RADIO", payload: "hightolow" })} />Price (high to low)</label></div>
+                    <div><label><input type='radio' name='ratings' onChange={() => filterDispatch({ type: "ADD_PRICE_RADIO", payload: "lowtohigh" })} />Price (low to high)</label></div>
+                    <div><label><input type='radio' name='ratings' onChange={() => filterDispatch({ type: "ADD_PRICE_RADIO", payload: "hightolow" })} />Price (high to low)</label></div>
 
 
 

@@ -11,8 +11,6 @@ const Cart = () => {
   const { state } = useContext(productContext)
   const cartListLength = state.cart.length > 0
   const [dispCoupon, setdispCoupon] = useState(false)
- console.log('state', state)
-
   return (
     <>
       <Navbar />

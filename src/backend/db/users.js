@@ -16,17 +16,17 @@ export const users = [
     address: [
       {
         _id: uuid(),
-        name: "Shahrukh khan",
+        name: "test user 1",
         address: "#1/4 , 100ft Ring Road, Karve Nagar, Bangalore,Maharashtra . 452412 India",
         phone: 123456789
       }, {
         _id: uuid(),
-        name: "Kamal Hasan",
+        name: "test user 2",
         address: "Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore",
         phone: 123456789
       }, {
         _id: uuid(),
-        name: "Kapil dev",
+        name: "test user 2",
         address: "29 Womble Street, Glennville,ga, 30423  United States",
         phone: 123456789
       }
