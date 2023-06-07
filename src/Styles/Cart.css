@@ -36,25 +36,24 @@
 .btn1,
 .btn2,
 .btn3 {
-  width: 150px;
-  background-color: var(--background-color);
+  height: 30px;
+  width: 185px;
+  margin: 15px 10px;
   border: none;
-  font-size: 15px;
+  font-size: 18px;
+  color: white;
 }
 
 .btn1 {
-  border: 1px solid green;
-  color: green;
+  background-color: #149253;
 }
 
 .btn2 {
-  border: 1px solid red;
-  color: red;
+  background-color:#BF4342;
 }
 
 .btn3 {
-  border: 1px solid var(--tertiary-color);
-  color: var(--tertiary-color);
+  background-color:#BF4342;
 }
 
 .card-item-details {
@@ -76,7 +75,7 @@
 }
 
 .price-percentage {
-  color: #008000;
+  color: #149253;
 }
 
 .actual-price {
@@ -147,7 +146,12 @@ fieldset,
   }
 
   .card-bottom {
-    margin-top: 170px;
+    margin-top: 140px;
+  }
+
+  
+  .card-bottom button{
+    margin-top: -10px;
   }
 }
 
@@ -161,6 +165,10 @@ fieldset,
   }
 
   .card-bottom {
-    margin-top: 200px;
+    margin-top: 150px;
+  }
+
+  .card-bottom button{
+    margin-top: -10px;
   }
 }

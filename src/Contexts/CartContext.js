@@ -112,13 +112,19 @@ const CartContextFunc = ({ children }) => {
       }, { totalPrice: 0, totalDiscount: 0, totalAmount: 0, totalQuantity:0 })
 
     
+
+    const clearCartFunc = () =>{
+        state.cart.forEach((product)=>{
+            removeFromCart(product._id)
+        })
+    }
       useEffect(() => {
         if (token) {
             getCartFunc();
         }
       }, [token]);
     return (
-        <cartContext.Provider value={{ addtoCart, isInCart, removeFromCart, updateCartFunc, cartPriceObj, isDiscountCodePrst}}>{children}</cartContext.Provider>
+        <cartContext.Provider value={{ addtoCart, isInCart, removeFromCart, updateCartFunc, cartPriceObj, isDiscountCodePrst, clearCartFunc}}>{children}</cartContext.Provider>
     )
 }
 

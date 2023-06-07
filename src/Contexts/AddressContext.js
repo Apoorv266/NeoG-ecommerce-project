@@ -8,30 +8,30 @@ import { toast } from 'react-toastify';
 export const addressContext = createContext()
 
 const AddressContextFunc = ({ children }) => {
-    const {token} = useContext(AuthContext)
+    const { token } = useContext(AuthContext)
     const { dispatch, state } = useContext(productContext)
 
 
     const addressFunc = async () => {
 
-            try {
-                // get initial address
-                const response = await axios.get("/api/user/addresses", {
-                    headers: { authorization: token },
-                });
-                const {
-                    status: addressStatus,
-                    data: { address },
-                } = response;
-                if (addressStatus === 200) {
-                    dispatch({
-                        type: "INITIAL_ADDRESS",
-                        payload: address,
-                    })
-                }
-            } catch (error) {
-                console.log( error)
+        try {
+            // get initial address
+            const response = await axios.get("/api/user/addresses", {
+                headers: { authorization: token },
+            });
+            const {
+                status: addressStatus,
+                data: { address },
+            } = response;
+            if (addressStatus === 200) {
+                dispatch({
+                    type: "INITIAL_ADDRESS",
+                    payload: address,
+                })
             }
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 
@@ -50,7 +50,7 @@ const AddressContextFunc = ({ children }) => {
                     type: "DELETE_ADDRESS",
                     payload: address,
                 })
-                ToastSuccess ("Address deleted successfully !")
+                ToastSuccess("Address deleted successfully !")
             }
         } catch (error) {
             ToastError("Some error occured !")
@@ -72,7 +72,7 @@ const AddressContextFunc = ({ children }) => {
             } = response;
             if (status === 201) {
                 dispatch({ type: "ADD_NEW_ADDRESS", payload: address });
-                ToastSuccess ("Address added successfully !")
+                ToastSuccess("Address added successfully !")
             }
         } catch (error) {
             console.log(error)
@@ -85,23 +85,23 @@ const AddressContextFunc = ({ children }) => {
         try {
             const response = await axios.post(
                 `/api/user/address/${addressId}`,
-                { address},
-                { headers: { authorization: token  } }
+                { address },
+                { headers: { authorization: token } }
             );
-            
-            
+
+
             const {
                 status,
-                data: { address: addressData},
-              } = response;
-              if (status === 200 || status === 201) {
+                data: { address: addressData },
+            } = response;
+            if (status === 200 || status === 201) {
                 dispatch({ type: "EDIT_ADDRESS", payload: addressData });
                 toast.success("Updated the address successfully!");
-              }
-            } catch (error) {
-                toast.success("Error !");
             }
-        
+        } catch (error) {
+            toast.success("Error !");
+        }
+
     }
 
 
@@ -109,10 +109,10 @@ const AddressContextFunc = ({ children }) => {
         if (token) {
             addressFunc();
         }
-      }, [token]);
+    }, [token]);
 
     return (
-        <addressContext.Provider value={{ deleteAddressFunc, addAddress ,editAddress, addressFunc}}>{children}</addressContext.Provider>
+        <addressContext.Provider value={{ deleteAddressFunc, addAddress, editAddress, addressFunc }}>{children}</addressContext.Provider>
     )
 }
 

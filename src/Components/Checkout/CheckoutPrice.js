@@ -9,7 +9,7 @@ import {
   } from "react-ionicons";
 const CheckoutPrice = ({address}) => {
     const { state, dispatch, setprofileCard} = useContext(productContext)
-    const {cartPriceObj, isDiscountCodePrst} = useContext(cartContext)
+    const {cartPriceObj, isDiscountCodePrst, clearCartFunc} = useContext(cartContext)
     const {totalPrice, totalDiscount, totalAmount, totalQuantity} = cartPriceObj
 
     const handleCheckot = (currentAddress, cart,totalCheckoutAmount) =>{
@@ -22,6 +22,7 @@ const CheckoutPrice = ({address}) => {
           };
        dispatch({type: "ADD_ORDER_DETAILS", payload :orderDetail})
        setprofileCard(2)
+       clearCartFunc()
     }
     return (
         <div className='checkout-price-main'>

@@ -16,7 +16,7 @@ import { productContext } from '../../Contexts/ProductContext';
             <div className='ordr-detail-items'>
                 <div className='discount-section'>
                     <h3>Have coupons ?</h3>
-                    <button className="coupon-btn" onClick={() => setdispCoupon(true)}>Apply coupons</button>
+                    <button className="coupon-btn" onClick={() => setdispCoupon(true)}>Check coupons</button>
                 </div>
 
 
