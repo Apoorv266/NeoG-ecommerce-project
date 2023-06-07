@@ -1,8 +1,9 @@
 # BEATWAVE.COM
 
 ## Demo
+
 <a href="https://www.loom.com/share/9d3ed44c63df4454aee4ceb565c8532d">
-    <p></p>
+    <p>Click here for Demo</p>
     <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/9d3ed44c63df4454aee4ceb565c8532d-with-play.gif">
   </a>
 
