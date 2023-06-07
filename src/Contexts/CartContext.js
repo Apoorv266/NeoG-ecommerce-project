@@ -48,7 +48,7 @@ const CartContextFunc = ({ children }) => {
                 ToastSuccess("Succesfully added to cart !")
             }
         } catch (error) {
-            if (token) {
+            if (!token) {
                 ToastError("Please login first !")
             } else {
                 ToastError("Some error occured !")
