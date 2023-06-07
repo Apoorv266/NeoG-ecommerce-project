@@ -34,6 +34,24 @@
   width: 100px;
 }
 
+.nav-icon {
+  position: relative;
+}
+
+.nav-icon p {
+  position: absolute;
+  /* /* padding: 0.1rem 0.4rem; */
+  height: 1.0rem;
+  width: 1.0rem; 
+  border-radius: 50%; 
+   top: 0.1rem;
+  left: 0.5rem; 
+  background-color: var(--tertiary-color);
+  color: black;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
 @media only screen and (max-width: 1024px) {
   .nav-main img{
     width: 55%;
@@ -93,5 +111,10 @@
     width: 400%;
     height: auto;
     margin-left: -20px;
+  }
+
+  .nav-icon p {
+    height: 0.9rem;
+    width: 0.9rem; 
   }
 }

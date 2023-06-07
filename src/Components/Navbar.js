@@ -12,7 +12,7 @@ import {
 } from "react-ionicons";
 const Navbar = () => {
   const { token } = useContext(AuthContext);
-  const { filterDispatch, filterState } = useContext(productContext);
+  const { filterDispatch, filterState, state } = useContext(productContext);
   const navigate = useNavigate();
   return (
     <div className="nav-main">
@@ -41,15 +41,21 @@ const Navbar = () => {
       <div className="icons">
         <Link to={"/products"}>
           <HomeOutline color={"#ffffff"} height="20px" width="20px" />
-        </Link>
-        <Link to={"/wishlist"}>
-          <HeartOutline color={"#ffffff"} height="20px" width="20px" />
-        </Link>
 
+        </Link>
+        <div className="nav-icon">
+          <Link to={"/wishlist"}>
+            <HeartOutline color={"#ffffff"} height="20px" width="20px" />
+          </Link>
+          {state.wishlist.length > 0 && token && <p>{state.wishlist.length}</p>}
+        </div>
+
+        <div className="nav-icon">
         <Link to={"/cart"}>
           <CartOutline color={"#ffffff"} height="20px" width="20px" />
         </Link>
-
+        {state.cart.length > 0 && token && <p>{state.cart.length}</p>}
+        </div>
         {token ? (
           <Link to={"/user-details"}>
             <PersonOutline color={"#ffffff"} height="20px" width="20px" />
