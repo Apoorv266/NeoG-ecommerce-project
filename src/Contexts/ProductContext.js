@@ -79,7 +79,6 @@ const ProductContextFunc = ({ children }) => {
     localStorage.setItem("addressData", JSON.stringify(state.address ));
   }, [state])
  
-  console.log(state)
   return (
     <productContext.Provider value={{ state, calPercentage, dispatch, filterDispatch, filterState, filterFunction, profileCard, setprofileCard}}>{children}</productContext.Provider>
   )
