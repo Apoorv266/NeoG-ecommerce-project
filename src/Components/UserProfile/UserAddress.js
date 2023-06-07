@@ -13,7 +13,7 @@ const UserAddress = () => {
         _id: "",
         name: "",
         address: "",
-        number: ""
+        phone: ""
     })
     const [saveBtn, setsaveBtn] = useState(false)
 
@@ -43,13 +43,13 @@ const UserAddress = () => {
     const addNewAddress = () => {
         const isAddressPresent = state.address.find((item) => item._id === addressForm._id)
         if (isAddressPresent) {
-            editAddress(addressForm,addressForm._id )
+            editAddress(addressForm,isAddressPresent._id )
         }else{
             addAddress({ ...addressForm, _id: uuid() })
         }
         setaddressForm({_id : "",name: "",
         address: "",
-        number: ""})
+        phone: ""})
         setIsOpen(false);
     }
     return (

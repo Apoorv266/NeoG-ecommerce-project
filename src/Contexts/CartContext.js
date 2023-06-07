@@ -8,7 +8,6 @@ import { AuthContext } from './Auth';
 export const cartContext = createContext()
 const CartContextFunc = ({ children }) => {
     const { dispatch, state } = useContext(productContext)
-    const storageToken = JSON.parse(localStorage.getItem("token"));
     const {token} = useContext(AuthContext)
     const isDiscountCodePrst = Object.keys(state.selectedCoupon).length > 0
 
@@ -49,7 +48,7 @@ const CartContextFunc = ({ children }) => {
                 ToastSuccess("Succesfully added to cart !")
             }
         } catch (error) {
-            if (!storageToken) {
+            if (token) {
                 ToastError("Please login first !")
             } else {
                 ToastError("Some error occured !")

@@ -26,7 +26,7 @@ export const users = [
         phone: 123456789
       }, {
         _id: uuid(),
-        name: "test user 2",
+        name: "test user 3",
         address: "29 Womble Street, Glennville,ga, 30423  United States",
         phone: 123456789
       }

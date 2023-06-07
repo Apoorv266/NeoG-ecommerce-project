@@ -10,7 +10,6 @@ export const wishlistContext = createContext()
 
 const WishlistContextFunc = ({ children }) => {
     const { dispatch, state } = useContext(productContext)
-    const storageToken = JSON.parse(localStorage.getItem("token"));
     const { token } = useContext(AuthContext)
 
     const getWishlistFunc = async () => {
@@ -49,7 +48,7 @@ const WishlistContextFunc = ({ children }) => {
                 ToastSuccess("Succesfully added to wishlist !")
             }
         } catch (error) {
-            if (!storageToken) {
+            if (!token) {
                 ToastError("Please login first !")
             } else {
                 ToastError("Some error occured !")

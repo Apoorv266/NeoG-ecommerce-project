@@ -3,13 +3,13 @@ import axios from 'axios'
 import { productContext } from './ProductContext';
 import { ToastError, ToastSuccess } from '../Components/Toast';
 import { AuthContext } from './Auth';
+import { toast } from 'react-toastify';
 
 export const addressContext = createContext()
-const storageToken = JSON.parse(localStorage.getItem("token"));
 
 const AddressContextFunc = ({ children }) => {
     const {token} = useContext(AuthContext)
-    const { dispatch } = useContext(productContext)
+    const { dispatch, state } = useContext(productContext)
 
 
     const addressFunc = async () => {
@@ -81,25 +81,25 @@ const AddressContextFunc = ({ children }) => {
     }
 
 
-    const editAddress = async (addressData, addressId) => {
+    const editAddress = async (address, addressId) => {
         try {
             const response = await axios.post(
                 `/api/user/address/${addressId}`,
-                { address: addressData },
+                { address},
                 { headers: { authorization: token  } }
             );
             
             const {
                 status,
-                data: { address },
+                data: { address: addressData},
               } = response;
-              if (status === 201) {
-                dispatch({ type: "EDIT_ADDRESS", payload: address });
-                ToastSuccess ("Address updated successfully !")
+              if (status === 200 || status === 201) {
+                dispatch({ type: "EDIT_ADDRESS", payload: addressData });
+                toast.success("Updated the address successfully!");
               }
-        } catch (error) {
-            ToastError("Some error occured !")
-        }
+            } catch (error) {
+                toast.success("Error !");
+            }
         
     }
 
