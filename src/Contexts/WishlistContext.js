@@ -38,7 +38,7 @@ const WishlistContextFunc = ({ children }) => {
             const { status, data: { wishlist } } = await axios.post(
                 "/api/user/wishlist",
                 { product },
-                { headers: { authorization: storageToken?.token } }
+                { headers: { authorization: token } }
             );
 
             if (status === 201) {
@@ -62,7 +62,7 @@ const WishlistContextFunc = ({ children }) => {
         try {
             const { status, data: { wishlist } } = await axios.delete(
                 `/api/user/wishlist/${id}`,
-                { headers: { authorization: storageToken?.token } }
+                { headers: { authorization: token } }
             );
             if (status === 200) {
                 dispatch({

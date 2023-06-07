@@ -38,7 +38,7 @@ const CartContextFunc = ({ children }) => {
                 "/api/user/cart",
                 { product },
                 {
-                    headers: { authorization: storageToken?.token },
+                    headers: { authorization: token},
                 }
             );
             if (status === 201) {
@@ -62,7 +62,7 @@ const CartContextFunc = ({ children }) => {
     const removeFromCart = async (productId) => {
         try {
             const { status, data: { cart } } = await axios.delete(`api/user/cart/${productId}`, {
-                headers: { authorization: storageToken?.token },
+                headers: { authorization: token },
             });
             if (status === 200) {
                 dispatch({ type: "REMOVE_FROM_CART", payload: cart })
@@ -82,7 +82,7 @@ const CartContextFunc = ({ children }) => {
             const { status, data: { cart } } = await axios.post(
                 `/api/user/cart/${productId}`,
                 { action: { type } },
-                { headers: { authorization: storageToken?.token } }
+                { headers: { authorization: token } }
             );
 
             if (status === 200) {

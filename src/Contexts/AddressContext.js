@@ -39,7 +39,7 @@ const AddressContextFunc = ({ children }) => {
         try {
             // delete address
             const response = await axios.delete(`/api/user/address/${addressId}`, {
-                headers: { authorization: storageToken?.token },
+                headers: { authorization: token },
             });
             const {
                 status: addressStatus,
@@ -86,7 +86,7 @@ const AddressContextFunc = ({ children }) => {
             const response = await axios.post(
                 `/api/user/address/${addressId}`,
                 { address: addressData },
-                { headers: { authorization: storageToken?.token  } }
+                { headers: { authorization: token  } }
             );
             
             const {
