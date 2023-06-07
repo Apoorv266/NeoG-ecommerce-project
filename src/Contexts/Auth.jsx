@@ -13,7 +13,6 @@ export function AuthProvider({ children }) {
 
   const navigate = useNavigate();
   const location = useLocation();
-
   const handleLogin = async (email, password) => {
     if (email && password !== "") {
       try {
