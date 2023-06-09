@@ -68,7 +68,7 @@ const WishlistContextFunc = ({ children }) => {
                     type: "REMOVE_FROM_WISHLIST",
                     payload: wishlist,
                 })
-                ToastSuccess("Succesfully removed from wishlist !")
+                ToastSuccess("Removed from wishlist !")
             }
         } catch (error) {
             ToastError("Some error occured !")

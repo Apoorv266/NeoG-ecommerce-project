@@ -109,6 +109,17 @@
   justify-content: center;
   gap: 5px;
 }
+.no-address-main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.no-address-title{
+  color: white;
+  width: 500px;
+  text-align: center;
+}
 
 @media only screen and (max-width : 1024px){
   .checkout-main {
