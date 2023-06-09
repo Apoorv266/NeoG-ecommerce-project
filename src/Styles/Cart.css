@@ -53,7 +53,8 @@
 }
 
 .btn3 {
-  background-color:#BF4342;
+  background-color:var(--tertiary-color);
+  color: black;
 }
 
 .card-item-details {

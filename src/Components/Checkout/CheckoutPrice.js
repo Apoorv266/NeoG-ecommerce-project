@@ -80,7 +80,8 @@ const CheckoutPrice = ({address}) => {
                 <p>{address?.phone}</p>
             </div>
             <Link to={"/order-placed"}>
-            <button className='pay-btn' onClick={()=>handleCheckot(address, state.cart,totalAmount )}>Pay and Place Order</button>
+               {state?.address.length > 0 ?   <button className='pay-btn' onClick={()=>handleCheckot(address, state.cart,totalAmount )}> Pay and Place Order</button> : <button disabled={true} className='dlt-address-btn'>Select Address</button>}
+           
             </Link>
         </div>
     )
